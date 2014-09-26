@@ -107,7 +107,7 @@ function getSubmission(){
 var op = getEntry();
 console.log(op);
 
-var arrayop=Array("Finish to Start", "Start to Start", "Start to Finish", " Start to Finish");
+var arrayop=Array("Finish to Start", "Start to Start", "Finish to Finish", " Start to Finish");
 
 var du= getDuration();
 console.log(du);
