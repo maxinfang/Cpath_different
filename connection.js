@@ -51,7 +51,7 @@ function addConnection(link){
   console.log(link.LT);
    console.log("ttttt");
   
-  if(link.activity==0    ){
+  if(link.activity==0 &&(link.LT==""||link.LT=="0")   ){
     
     linkconn.setPaintStyle({lineWidth: 2, 
       strokeStyle:"#666",
