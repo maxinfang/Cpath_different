@@ -2,6 +2,8 @@
  var mylinks=new Array();
  var templink;
  var questionId=this.frameElement.attributes.id.value; 
+
+ var answer_type="default";
  var array = questionId.split("_");
 
   
@@ -17,6 +19,7 @@ var namespaceforSub = array[0]+"_"+array[1]+"_submission";
 var namespaceforEntry = array[0]+"_"+array[1]+"_entry"; 
 var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
+var namespacefortype= array[0]+"_"+array[1]+"_type"; 
 var op= new Array();
 
  
@@ -25,7 +28,19 @@ if(parent.document.getElementById(namespaceforSub))
 }
 else{
   mode="student";
+  answer_type=getType();
 };
+
+function getType(){
+  
+  var element=parent.document.getElementById(namespacefortype);
+ 
+  if ( typeof element !="undefined"&& element !=null ) { 
+  
+     return element.innerHTML;
+    
+}
+}
 
 function getDuration(){
  var elements=new Array();  
