@@ -63,6 +63,7 @@ function drawarrowbox(type,data,conn){
     $(dropL).change(function() { 
     var indexvalue= $( "#"+dropLid+" option:selected" ).val();
     data.activity= indexvalue;
+    updatelink(data,"activity",conn);
     });
      
    
