@@ -15,7 +15,25 @@ function redraw(history){
   
 }
    
+if(mode=="correct" && answer_type=="overlapping"){  for(n=0; n<myNodes.length;n++){ 
+    var node= myNodes[n];
+    console.log(node);
+    drawnode(node);
+  }   
+ var linkedArray= new Array(); for(n=0; n<myNodes.length;n++){  
+  var node=myNodes[n];  
+       //console.log(node);
+       var linkedNode= new NodeClass(node)
+     // console.log(linkedNode);
+     linkedArray.push(linkedNode);  
+  
+   } 
+for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
+    
+     addConnections(mylinks);
+    
 
+} 
  
 if(mode=="correct" && answer_type=="precedence") { 
  var root = new Node();
@@ -28,7 +46,7 @@ if(mode=="correct" && answer_type=="precedence") {
        var linkedNode= new NodeClass(node)
      // console.log(linkedNode);
      linkedArray.push(linkedNode);  
-     linkedArray2.push(linkedNode);
+   
    } 
    
   
@@ -329,4 +347,5 @@ if(mode=="correct" && answer_type=="precedence") {
     
   }
 }
+
 

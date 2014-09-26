@@ -116,8 +116,12 @@ function getHistory(){
 
 
 var op = getEntry();
+console.log(op);
+
+var arrayop=Array("Finish to Start", "Start to Start", "Start to Finish", " Start to Finish");
+
 var du= getDuration();
- 
+console.log(du);
 $(document).ready(function()  { 
   
     //initialize jsPlumb
@@ -175,7 +179,7 @@ $(document).ready(function()  {
        if (conn.getOverlays().length<=1){
         jsPlumb.select(conn).addOverlay( ["Custom", {
           create:function(component) {  
-            var boxvalue= drawbox("line",cc,conn);  
+            var boxvalue= drawbox("arrow",cc,conn);  
             return $(boxvalue);  
           },
           location:0.5,

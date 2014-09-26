@@ -32,12 +32,7 @@ if (!Array.prototype.indexOf)
 function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){ 
  this.h="";
  this.t="";
- this.EST="";
- this.EFT=""; 
- this.LST="";
- this.LFT="";
- this.FF="";
- this.TF="";
+ this.LT="";
  this.activity="";
 }
 
@@ -93,12 +88,8 @@ function deserialiseL(string){
    cc.h= linkAttribute[1]
    cc.t= linkAttribute[2]; 
    cc.activity=dataAttribute[1];
-   cc.EST=dataAttribute[2];
-   cc.EFT=dataAttribute[3];
-   cc.LST=dataAttribute[4];
-   cc.LFT=dataAttribute[5];
-   cc.FF=dataAttribute[6];
-   cc.TF=dataAttribute[7]; 
+   cc.LT=dataAttribute[2];
+ 
    array.push(cc);
  }
  
@@ -125,8 +116,7 @@ function deserialiseC(string){
        node.id= nodeAttribute[1]
        node.top=nodeAttribute[2];
        node.left=nodeAttribute[3];
-   console.log(node.id+"top:"+node.top+":"+node.left);
-   
+ 
        var dataAttribute=shapeanddata[1].split('d');
       // console.log(dataAttribute);
       node.activity=dataAttribute[1];
@@ -174,9 +164,11 @@ function deserialiseC(string){
     } 
     answervalue+=CL_SEPARATOR='a';
     
+    console.log(mylinks);
+    
     for(l=0;l<mylinks.length;l++){
       var thislink=mylinks[l]; 
-     //Cc"id"c"top"c"left"c
+     
      answervalue+=L_SEPARATOR;   
      answervalue+=C_field_SEPARATOR; 
      answervalue+=thislink.h;
@@ -188,21 +180,7 @@ function deserialiseC(string){
      answervalue+=Label_SEPARATOR;
      answervalue+=thislink.activity;
      answervalue+=Label_SEPARATOR;
-     answervalue+=thislink.EST;
-     
-     answervalue+=Label_SEPARATOR;
-     answervalue+=thislink.EFT;
-     answervalue+=Label_SEPARATOR;
-     
-     answervalue+=thislink.LST;
-     answervalue+=Label_SEPARATOR;
-     answervalue+=thislink.LFT;
-     answervalue+=Label_SEPARATOR;
-     answervalue+=thislink.FF;
-     answervalue+=Label_SEPARATOR;
-     answervalue+=thislink.TF; 
-      
-      
+     answervalue+=thislink.LT; 
     } 
     
     return answervalue;
@@ -363,6 +341,7 @@ function updatelink(link,property,con){
  if(property=="LFT"){ll.LFT=link.LFT;}
  if(property=="FF"){ll.FF=link.FF;} 
  if(property=="TF"){ll.TF=link.TF;}
+ if(property=="LT"){ll.LT=link.LT;}
 }
 if(mode == "student"){ sentToparentPage();}
 return;
@@ -433,7 +412,7 @@ else{
 
 function sentToparentPage()
 {   giveWarning();
-  console.log(mylinks);
+  
   answervalue= serialise(myNodes,mylinks);
   console.log(answervalue);
   

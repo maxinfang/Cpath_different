@@ -47,14 +47,24 @@ function drawarrowbox(type,data,conn){
     $(datadiv).append(oNewP);
    
      
-   var ESTdata = document.createElement("div");
-       var EST=(data.EST=="") ? addtext("EST") : addtext("EST",data.EST);
-   ESTdata.style.display = 'block'; 
-       $(ESTdata).append(addlabel(" Lead Time:"));
-   $(datadiv).append(ESTdata);
-         $(ESTdata).append(EST); 
-    
-  
+   var LTdata = document.createElement("div");
+       var LT=(data.LT=="") ? addtext("LT") : addtext("LT",data.LT);
+   LTdata.style.display = 'block'; 
+       $(LTdata).append(addlabel(" Lead Time:"));
+   $(datadiv).append(LTdata);
+         $(LTdata).append(LT); 
+       
+    $(LT).change(function() {
+     data.LT= $(LT).val();
+     updatelink(data,"LT",conn);
+     
+   });
+       
+    $(dropL).change(function() { 
+    var indexvalue= $( "#"+dropLid+" option:selected" ).val();
+    data.activity= indexvalue;
+    });
+     
    
  }
  var returndiv= document.createElement('div');
