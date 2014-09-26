@@ -47,8 +47,11 @@ function addConnection(link){
              }]); 
   
   $(".datatable").jLzindex();
+  console.log("ttttt");
+  console.log(link.LT);
+   console.log("ttttt");
   
-  if(link.activity==0){
+  if(link.activity==0    ){
     
     linkconn.setPaintStyle({lineWidth: 2, 
       strokeStyle:"#666",

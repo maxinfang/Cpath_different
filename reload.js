@@ -15,7 +15,7 @@ function redraw(history){
   
 }
    
-if(mode=="correct" && answer_type=="overlapping"){  for(n=0; n<myNodes.length;n++){ 
+if(mode=="student" && answer_type=="overlapping"){  for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     console.log(node);
     drawnode(node);
