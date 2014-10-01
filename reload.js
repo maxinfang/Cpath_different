@@ -14,8 +14,10 @@ function redraw(history){
   }   
   
 }
+  
+
    
-if(mode=="student" && answer_type=="overlapping"){  for(n=0; n<myNodes.length;n++){ 
+if( mode=="student" && answer_type=="overlapping"){  for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     console.log(node);
     drawnode(node);
@@ -35,6 +37,102 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
 
 } 
  
+  if( mode=="correct" && answer_type=="overlapping"){  
+     var root = new Node();
+     root = findrootnode();  
+    var linkedArray= new Array(); 
+    var linkedArray2= new Array();   
+    for(n=0; n<myNodes.length;n++){  
+      var node=myNodes[n];  
+       //console.log(node);
+       var linkedNode= new NodeClass(node)
+     // console.log(linkedNode);
+     linkedArray.push(linkedNode);  
+     linkedArray2.push(linkedNode);
+   } 
+    
+    
+    for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var children= new Array(); 
+      var parents= new Array(); 
+      for(var n=0; n<mylinks.length;n++){ 
+       var link= mylinks[n]; 
+       if (link.t==linkedNode.id){
+         parents.push(findlinkednode(link.h));
+       }
+       
+       if (link.h == linkedNode.id){
+         children.push(findlinkednode(link.t))
+       }
+     }
+           // linkedNode.node.parentID;  
+         // console.log(children);
+         linkedNode.prevNode=parents; 
+         linkedNode.nextNodes=children;
+      console.log(linkedNode);
+       }    
+    
+     var linkedrootnode=findlinkednode(root.id)
+       recursive(linkedrootnode); 
+       var deep =linkedrootnode.level;
+   
+    
+    
+    
+    
+       for(var n=deep; n>0 ;n--){
+        
+         for (var j=0;j<linkedArray.length;j++){
+           var  lnode=  linkedArray[j];
+           if(lnode.level== n) {  
+            
+             var parentnodes=lnode.prevNode; 
+             
+             var maxValudeofParentEFT=0;
+             for(var k=0; k<parentnodes.length; k++ ){
+              var nodedata= parentnodes[k].node;
+              var parentEFT= nodedata.EFT;
+              if(maxValudeofParentEFT < parentEFT)
+                {maxValudeofParentEFT = parentEFT; }
+            }
+            
+            calculateEST(lnode.node,maxValudeofParentEFT);
+            calculateEFT(lnode.node);
+            
+          }
+        }
+      }
+     
+    for(n=0; n<myNodes.length;n++){ 
+    var node= myNodes[n];
+    console.log(node);
+    drawnode(node);
+  }   
+    
+ 
+for (j=0;j<linkedArray.length;j++){console.log(linkedArray[j]);
+                                   }
+     addConnections(mylinks); 
+} 
+  
+  
+  
+  
+ function findlinkednode(id){
+    
+   for (x=0;x<linkedArray2.length;x++){ 
+     var li=linkedArray2[x];
+     if(li.id==id){return li;}
+   } 
+   return "none";
+ } 
+   
+  
+ 
+  
+  
 if(mode=="correct" && answer_type=="precedence") { 
  var root = new Node();
  root = findrootnode();  
@@ -51,14 +149,6 @@ if(mode=="correct" && answer_type=="precedence") {
    
   
   
-  function findlinkednode(id){
-    
-   for (x=0;x<linkedArray2.length;x++){ 
-     var li=linkedArray2[x];
-     if(li.id==id){return li;}
-   } 
-   return "none";
- } 
  
  
  
