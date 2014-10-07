@@ -71,8 +71,40 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
          // console.log(children);
          linkedNode.prevNode=parents; 
          linkedNode.nextNodes=children;
+         
       console.log(linkedNode);
        }    
+       for (j=0;j<linkedArray.length;j++){ 
+      
+      var linkedNode=linkedArray[j]; 
+      var predessors=Array();
+      var successors=Array();
+     
+      predessors= linkedNode.prevNode;
+      successors=linkedNode.nextNodes;
+     
+       //findlink();
+       var prevlink=Array();
+      for (p=0; p<predessors.length;p++){
+        var head=predessors[p].id;
+        var link=findlink(head,linkedNode.id);
+         prevlink.push(link);  
+     }
+       linkedNode.prevconnectors=prevlink;
+     
+      var suclink=Array();
+      for (s=0; s<successors.length;s++){
+        var tail=successors[s].id;
+        var link=findlink(linkedNode.id,tail);
+         suclink.push(link);  
+     }
+       linkedNode.nextconnectors=suclink;
+     
+       
+   }
+    
+    
+    
     
      var linkedrootnode=findlinkednode(root.id)
        recursive(linkedrootnode); 
@@ -81,29 +113,52 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
     
     
     
-    
-       for(var n=deep; n>0 ;n--){
+    for(var n=deep; n>0 ;n--){
         
          for (var j=0;j<linkedArray.length;j++){
            var  lnode=  linkedArray[j];
            if(lnode.level== n) {  
             
-             var parentnodes=lnode.prevNode; 
+             var precon=lnode.prevconnectors;  
+            
+             var   _array = new Array(); 
+             _array.push(0); 
              
-             var maxValudeofParentEFT=0;
-             for(var k=0; k<parentnodes.length; k++ ){
-              var nodedata= parentnodes[k].node;
-              var parentEFT= nodedata.EFT;
-              if(maxValudeofParentEFT < parentEFT)
-                {maxValudeofParentEFT = parentEFT; }
-            }
-            
-            calculateEST(lnode.node,maxValudeofParentEFT);
-            calculateEFT(lnode.node);
-            
-          }
-        }
-      }
+             for(var k=0; k<precon.length; k++ ){ 1
+              console.log(lnode.id);
+              var con = precon[k] ;
+               if(con.activity==0){var parentlinkednode=findlinkednode(con.h);
+                                   var parentnode= parentlinkednode.node;
+                                    _array.push(+parentnode.EFT+ +con.LT); 
+                                  }
+               if(con.activity==1){var parentlinkednode=findlinkednode(con.h);
+                                   var parentnode= parentlinkednode.node;
+                                    _array.push(+parentnode.EST+ +con.LT); }
+               if(con.activity==2){var parentlinkednode=findlinkednode(con.h);
+                                   var parentnode= parentlinkednode.node;
+                                   var duration =du[lnode.node.activity];
+                                   var temp=+parentnode.EFT+ +con.LT-+duration;
+                                    _array.push(temp); 
+                                       }
+               if(con.activity==3){var parentlinkednode=findlinkednode(con.h);
+                                   var parentnode= parentlinkednode.node;
+                                   var duration =du[lnode.node.activity];
+                                   var temp=+parentnode.EST+ +con.LT-+duration;
+                                    _array.push(temp);}
+               
+             
+             }
+             var maxValudeofParentEFT=Math.max.apply(Math,_array); 
+             calculateEST(lnode.node,maxValudeofParentEFT);
+            calculateEFT(lnode.node);   
+             
+             
+           }
+         }
+    }      
+               
+                                   //} _array.push(
+       
      
     for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];

@@ -34,6 +34,7 @@ function connector(id,h,t,EST,EFT,LST,LFT,FF,TF){
  this.t="";
  this.LT="";
  this.activity="";
+  
 }
 
 function Node(id,type,parent,top,left,activity,EST,EFT,LST,LFT,FF,TF){     
