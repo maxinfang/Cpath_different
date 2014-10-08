@@ -43,12 +43,11 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
     var linkedArray= new Array(); 
     var linkedArray2= new Array();   
     for(n=0; n<myNodes.length;n++){  
-      var node=myNodes[n];  
-       //console.log(node);
-       var linkedNode= new NodeClass(node)
-     // console.log(linkedNode);
-     linkedArray.push(linkedNode);  
-     linkedArray2.push(linkedNode);
+      var node=myNodes[n]; 
+      var linkedNode= new NodeClass(node)
+     
+      linkedArray.push(linkedNode);  
+      linkedArray2.push(linkedNode);
    } 
     
     
@@ -67,15 +66,12 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
          children.push(findlinkednode(link.t))
        }
      }
-           // linkedNode.node.parentID;  
-         // console.log(children);
-         linkedNode.prevNode=parents; 
-         linkedNode.nextNodes=children;
-         
-      console.log(linkedNode);
+           
+       linkedNode.prevNode=parents; 
+       linkedNode.nextNodes=children; 
        }    
-       for (j=0;j<linkedArray.length;j++){ 
-      
+    
+   for (j=0;j<linkedArray.length;j++){  
       var linkedNode=linkedArray[j]; 
       var predessors=Array();
       var successors=Array();
@@ -83,7 +79,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
       predessors= linkedNode.prevNode;
       successors=linkedNode.nextNodes;
      
-       //findlink();
+    
        var prevlink=Array();
       for (p=0; p<predessors.length;p++){
         var head=predessors[p].id;
@@ -98,17 +94,13 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
         var link=findlink(linkedNode.id,tail);
          suclink.push(link);  
      }
-       linkedNode.nextconnectors=suclink;
-     
+       linkedNode.nextconnectors=suclink; 
        
    }
-    
-    
-    
-    
+     
      var linkedrootnode=findlinkednode(root.id)
-       recursive(linkedrootnode); 
-       var deep =linkedrootnode.level;
+     recursive(linkedrootnode); 
+     var deep =linkedrootnode.level;
    
     
     
@@ -124,7 +116,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
              var   _array = new Array(); 
              _array.push(0); 
              
-             for(var k=0; k<precon.length; k++ ){ 1
+             for(var k=0; k<precon.length; k++ ){  
               console.log(lnode.id);
               var con = precon[k] ;
                if(con.activity==0){var parentlinkednode=findlinkednode(con.h);
@@ -150,16 +142,43 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
              }
              var maxValudeofParentEFT=Math.max.apply(Math,_array); 
              calculateEST(lnode.node,maxValudeofParentEFT);
-            calculateEFT(lnode.node);   
+             calculateEFT(lnode.node);   
              
              
            }
          }
     }      
                
-                                   //} _array.push(
+     var project_duration=0 ;     
+      for( var i=1; i<=deep; i++ )   {
+       for (var j=0;j<linkedArray.length;j++){
+         var lnode= linkedArray[j];
+         var nodeEFT= lnode.node.EFT;
+         if(project_duration < nodeEFT){
+          project_duration =nodeEFT;
+          
+        } 
+      }
+    }    
        
-     
+    console.log( project_duration);
+    
+       for( var i=1; i<=deep; i++ )   {
+       
+      for (var j=0;j<linkedArray.length;j++){
+       var  lnode=  linkedArray[j]; 
+       if(lnode.level==i) {
+         lnode.node.LFT= project_duration;
+        
+         
+          
+        }
+      }
+    }
+   
+   
+   
+    
     for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     console.log(node);
@@ -195,25 +214,15 @@ if(mode=="correct" && answer_type=="precedence") {
  var linkedArray2= new Array();  
  for(n=0; n<myNodes.length;n++){  
   var node=myNodes[n];  
-       //console.log(node);
+        //console.log(node);
        var linkedNode= new NodeClass(node)
-     // console.log(linkedNode);
-     linkedArray.push(linkedNode);  
+        // console.log(linkedNode);
+        linkedArray.push(linkedNode);  
    
-   } 
-   
-  
-  
- 
- 
+   }  
  
     // console.log(du[root.activity]);
-    // console.log(du[root.activity]);
-    
-    
-    
-    
-    
+    // console.log(du[root.activity]); 
      //set children and parents; 
      
      for (j=0;j<linkedArray.length;j++){ 
