@@ -480,6 +480,18 @@ function calculateFFTF(node,value){
 }
 
 
+function calculateTF(node){
+  node.TF=  +node.LFT - +node.EFT; 
+  if(node.TF == 0)  { node.TF= "0";}
+}
+
+
+function calculateFF(node,value){
+  node.FF=value;
+  
+  
+  if(node.FF == 0)  { node.FF= "0";}
+}
 
 function deleteNode(node)
 {

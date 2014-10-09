@@ -161,16 +161,69 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
       }
     }    
        
-    console.log( project_duration);
     
-       for( var i=1; i<=deep; i++ )   {
+  for( var i=1; i<=deep; i++ )   {
        
       for (var j=0;j<linkedArray.length;j++){
        var  lnode=  linkedArray[j]; 
        if(lnode.level==i) {
-         lnode.node.LFT= project_duration;
-        
          
+         
+         var nextcon=lnode.nextconnectors;  
+            
+             var   _array = new Array(); 
+             var   _array2 =new Array();
+             _array.push(project_duration); 
+             _array2.push(project_duration); 
+                for(var k=0; k<nextcon.length; k++ ){  
+                var con = nextcon[k] ;
+               if(con.activity==0){var parentlinkednode=findlinkednode(con.t);
+                                   var parentnode= parentlinkednode.node;
+                                   _array.push(+parentnode.EFT+ +con.LT);
+                                   
+                                    var diff=+parentnode.EST - lnode.node.EFT;
+                                    var ff=diff-con.LT;
+                                   _array2.push(ff);
+                                   
+                                  }
+               if(con.activity==1){var parentlinkednode=findlinkednode(con.t);
+                                   var parentnode= parentlinkednode.node;
+                                    _array.push(+parentnode.EST+ +con.LT); 
+                                   
+                                   var diff=parentnode.EST-lnode.node.EST;
+                                    var ff=diff-con.LT;
+                                   _array2.push(ff);
+                                  
+                                  }
+               if(con.activity==2){var parentlinkednode=findlinkednode(con.t);
+                                   var parentnode= parentlinkednode.node;
+                                   var duration =du[lnode.node.activity];
+                                   var temp=+parentnode.EFT+ +con.LT-+duration;
+                                    _array.push(temp); 
+                                   
+                                     var diff=+parentnode.EFT-lnode.node.EFT;
+                                    var ff=diff-con.LT;
+                                   _array2.push(ff);
+                                       }
+               if(con.activity==3){var parentlinkednode=findlinkednode(con.t);
+                                   var parentnode= parentlinkednode.node;
+                                   var duration =du[lnode.node.activity];
+                                   var temp=+parentnode.EST+ +con.LT-+duration;
+                                    _array.push(temp);
+                                   
+                                   
+                                    var diff=+parentnode.EFT-lnode.node.EST;
+                                    var ff=diff-con.LT;
+                                   _array2.push(ff);
+                                  }
+                  
+                }
+          var minEFT=Math.min.apply(Math,_array);
+          var minFF= Math.min.apply(Math,_array2);
+          calculateLFT(lnode.node,minEFT);
+          calculateLST(lnode.node); 
+          calculateTF(lnode.node); 
+          calculateFF(lnode.node,minFF);
           
         }
       }
@@ -269,6 +322,7 @@ if(mode=="correct" && answer_type=="precedence") {
             
             calculateEST(lnode.node,maxValudeofParentEFT);
             calculateEFT(lnode.node);
+         
             
           }
         }
