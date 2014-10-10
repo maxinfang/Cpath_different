@@ -192,7 +192,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                if(con.activity==1){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration=du[lnode.node.activity]; 
-                          _array.push(+parentnode.LST-con.LT+ +duration );             console.log(+parentnode.LST-con.LT+duration);console.log(+parentnode.LST);console.log(con.LT);           console.log(duration);      
+                          _array.push(+parentnode.LST-con.LT+ +duration );       ;      
 
                                    
                                    var diff=parentnode.EST-lnode.node.EST;
@@ -217,7 +217,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                if(con.activity==3){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration =du[lnode.node.activity];
-                                   var temp=+parentnode.LFT- +con.LT+duration;
+                                   var temp=+parentnode.LFT- + con.LT+ +duration;
                                     _array.push(temp);
                                    
                                    
