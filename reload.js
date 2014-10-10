@@ -177,38 +177,46 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
              _array2.push(project_duration); 
                 for(var k=0; k<nextcon.length; k++ ){  
                 var con = nextcon[k] ;
+                  
+                  //finish to start;
                if(con.activity==0){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
-                                   _array.push(+parentnode.EFT+ +con.LT);
+                                   _array.push(+parentnode.LST+ - +con.LT);
                                    
                                     var diff=+parentnode.EST - lnode.node.EFT;
                                     var ff=diff-con.LT;
                                    _array2.push(ff);
                                    
                                   }
+                  //start to start
                if(con.activity==1){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
-                                    _array.push(+parentnode.EST+ +con.LT); 
+                                   var duration=du[lnode.node.activity];
+                                    _array.push(+parentnode.LST+ - +con.LT+duration ); 
                                    
                                    var diff=parentnode.EST-lnode.node.EST;
                                     var ff=diff-con.LT;
                                    _array2.push(ff);
                                   
                                   }
+                 //finish to finish
                if(con.activity==2){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration =du[lnode.node.activity];
-                                   var temp=+parentnode.EFT+ +con.LT-+duration;
+                                   var temp=+parentnode.LFT+ - +con.LT;
                                     _array.push(temp); 
                                    
                                      var diff=+parentnode.EFT-lnode.node.EFT;
                                     var ff=diff-con.LT;
                                    _array2.push(ff);
                                        }
+
+
+             // star to finish 
                if(con.activity==3){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration =du[lnode.node.activity];
-                                   var temp=+parentnode.EST+ +con.LT-+duration;
+                                   var temp=+parentnode.LFT+ - +con.LT+duration;
                                     _array.push(temp);
                                    
                                    
