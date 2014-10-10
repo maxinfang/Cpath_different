@@ -191,8 +191,9 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                   //start to start
                if(con.activity==1){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
-                                   var duration=du[lnode.node.activity];
-                                    _array.push(+parentnode.LST+ - +con.LT+duration ); 
+                                   var duration=du[lnode.node.activity]; 
+                          _array.push(+parentnode.LST - +con.LT+duration );             console.log("start to stat + lnode.id");           console.log(con.LT);      
+
                                    
                                    var diff=parentnode.EST-lnode.node.EST;
                                     var ff=diff-con.LT;
@@ -203,7 +204,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                if(con.activity==2){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration =du[lnode.node.activity];
-                                   var temp=+parentnode.LFT+ - +con.LT;
+                                   var temp=+parentnode.LFT - +con.LT;
                                     _array.push(temp); 
                                    
                                      var diff=+parentnode.EFT-lnode.node.EFT;
@@ -216,7 +217,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                if(con.activity==3){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration =du[lnode.node.activity];
-                                   var temp=+parentnode.LFT+ - +con.LT+duration;
+                                   var temp=+parentnode.LFT- +con.LT+duration;
                                     _array.push(temp);
                                    
                                    
