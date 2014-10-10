@@ -192,7 +192,7 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                if(con.activity==1){var parentlinkednode=findlinkednode(con.t);
                                    var parentnode= parentlinkednode.node;
                                    var duration=du[lnode.node.activity]; 
-                          _array.push(+parentnode.LST - +con.LT+duration );             console.log("start to stat + lnode.id");           console.log(con.LT);      
+                          _array.push(+parentnode.LST-con.LT+ +duration );             console.log(+parentnode.LST-con.LT+duration);console.log(+parentnode.LST);console.log(con.LT);           console.log(duration);      
 
                                    
                                    var diff=parentnode.EST-lnode.node.EST;
