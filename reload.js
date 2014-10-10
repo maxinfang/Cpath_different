@@ -228,10 +228,11 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
                   
                 }
           var minEFT=Math.min.apply(Math,_array);
-          var minFF= Math.min.apply(Math,_array2);
+         
           calculateLFT(lnode.node,minEFT);
           calculateLST(lnode.node); 
-          calculateTF(lnode.node); 
+          calculateTF(lnode.node);   
+ _array2.push(lnode.node.TF);   var minFF= Math.min.apply(Math,_array2);
           calculateFF(lnode.node,minFF);
           
         }
