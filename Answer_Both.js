@@ -160,11 +160,8 @@ $(document).ready(function()  {
       
      var conn = info.connection;
      var parentId=$('#'+conn.sourceId).parent().attr('id');
-     var childId=$('#'+conn.targetId).parent().attr('id');
-     
-     
-     if (parentId != childId) {
-      
+     var childId=$('#'+conn.targetId).parent().attr('id'); 
+     if (parentId != childId) { 
        var cc= findlink(parentId,childId);  
        cc = new connector();
        cc.h=parentId;

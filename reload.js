@@ -8,7 +8,9 @@ function redraw(history){
  
  if(mode == "submission")
   { for(n=0; n<myNodes.length;n++){ 
+    
     var node= myNodes[n];
+    console.log("empty");
     console.log(node);
     drawnode(node);
   }   
@@ -232,7 +234,9 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
           calculateLFT(lnode.node,minEFT);
           calculateLST(lnode.node); 
           calculateTF(lnode.node);   
- _array2.push(lnode.node.TF);   var minFF= Math.min.apply(Math,_array2);
+         _array2.push(lnode.node.TF);
+       
+         var minFF= Math.min.apply(Math,_array2);
           calculateFF(lnode.node,minFF);
           
         }
