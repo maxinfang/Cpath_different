@@ -92,8 +92,9 @@ function getEntry(){
 
 function getHistory(){
   
-  var elem= parent.document.getElementsByTagName("input"); 
-  
+ // var elem= parent.document.getElementsByTagName("input"); 
+        var elem=$("input[name^='ans.'][name$='.0']", window.parent.document) //parent.document.getElementsByName("ans.0.0");
+
   
   var arr = new Array();
   var i = 0;
