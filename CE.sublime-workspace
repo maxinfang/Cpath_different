@@ -1,0 +1,224 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 332.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Add Channel"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/Users/maxinfang/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/ztxt/FaultEventTree/maxv2.js",
+		"/Applications/MAMP/htdocs/reliability/maxv2.js",
+		"/Applications/MAMP/htdocs/Cpath/function.js",
+		"/Applications/MAMP/htdocs/Cpath/data.js",
+		"/Applications/MAMP/htdocs/FaultTree/answer.js",
+		"/Applications/MAMP/htdocs/FaultTree/maxv2.js",
+		"/Users/maxinfang/Library/Caches/Cleanup At Startup/Transmit/E867FFC0-8F05-43FA-83D6-77F4835E447D/page_assessment.php",
+		"/Users/maxinfang/Library/Caches/Cleanup At Startup/Transmit/03191CEA-9A43-41BF-B510-D4E81EE89C66/page_course_info.php",
+		"/Users/maxinfang/Library/Caches/Cleanup At Startup/Transmit/D21B1022-5408-4836-98B8-171382A35AE2/test_model.php",
+		"/Users/maxinfang/Library/Caches/Cleanup At Startup/Transmit/0A586C82-8112-47E2-ABFD-0D8F75F0CAE6/pdfedit.php",
+		"/Applications/MAMP/htdocs/reliability/function.js",
+		"/Applications/MAMP/htdocs/reliability/student.html",
+		"/Applications/MAMP/htdocs/DecisionTree/s_a.html",
+		"/Applications/MAMP/htdocs/ET/s.html",
+		"/Applications/MAMP/htdocs/1/drawbox.js",
+		"/Applications/MAMP/htdocs/FaultEventTree/function.js",
+		"/maple_answer=menulist :=[\"Dummy activity\",\"ACL\",\"A",
+		"/Users/maxinfang/Desktop/23",
+		"/Users/maxinfang/Desktop/2",
+		"/Users/maxinfang/Desktop/untitled2",
+		"/Users/maxinfang/Desktop/房子网站",
+		"/Users/maxinfang/Desktop/untitled",
+		"/Users/maxinfang/Desktop/headache.txt",
+		"/Users/maxinfang/Dropbox/maple/maple_CPM/CMP_overlapping.maple",
+		"/Users/maxinfang/Downloads/submitted_node_parent := getParent(submitted_node",
+		"/Users/maxinfang/Dropbox/maple/maple_CPM/Test cases for overlapping relationships (1).maple",
+		"/Users/maxinfang/Dropbox/maple/maple_CPM/unit_test.txt",
+		"/Users/maxinfang/Downloads/overlapping v1.qu",
+		"/Users/maxinfang/Library/Caches/Cleanup At Startup/Transmit/28105874-0FE5-43C4-A104-951F925B4AB3/staff-profile-info.php",
+		"/Users/maxinfang/Desktop/股票"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"gethistory",
+			"getelementBy",
+			"gethistory",
+			"getelementby",
+			"ans.0",
+			"ans",
+			"ans.",
+			"ans.0",
+			"ans",
+			"parent.document.getelem",
+			"namespaceforAnswer",
+			"answer",
+			":00",
+			"de",
+			"parse_string",
+			"submitted",
+			"myfass"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "CE.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

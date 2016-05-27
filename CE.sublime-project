@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Applications/MAMP/htdocs/complicated_faultTree"
+		},
+		{
+			"path": "/Applications/MAMP/htdocs/Cpath"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "/Applications/MAMP/htdocs/Cpath_withdifferent_version"
+		},
+		{
+			"path": "/Applications/MAMP/htdocs/DecisionTree"
+		},
+		{
+			"path": "/Applications/MAMP/htdocs/FaultEventTree"
+		},
+		{
+			"path": "/Applications/MAMP/htdocs/reliability"
+		}
+	]
+}
