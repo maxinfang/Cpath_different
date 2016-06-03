@@ -134,6 +134,24 @@ function deserialiseC(string){
   }
 
 
+  function validateInt(value)
+{
+    var num = value;
+    var regex=/^\d*$/;;
+    
+  
+  message="true";
+  
+  if (!num.match(regex)) { message="Numbers must be Integer"; 
+                          }
+      
+  return message;
+  
+  
+ }
+
+
+
   function serialise(myNodes,mylinks){
     
     var answervalue ="";  

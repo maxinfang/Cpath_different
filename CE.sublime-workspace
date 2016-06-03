@@ -7,6 +7,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Applications/MAMP/htdocs/DecisionTree/function.js",
+			"settings":
+			{
+				"buffer_size": 5956,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -48,9 +56,12 @@
 	},
 	"expanded_folders":
 	[
+		"/Applications/MAMP/htdocs/DecisionTree"
 	],
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/Cpath_withdifferent_version/Question_Both.js",
+		"/Applications/MAMP/htdocs/reliability/Question_Both.js",
 		"/Users/maxinfang/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Applications/MAMP/htdocs/ztxt/FaultEventTree/maxv2.js",
 		"/Applications/MAMP/htdocs/reliability/maxv2.js",
@@ -85,7 +96,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -134,8 +145,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Applications/MAMP/htdocs/DecisionTree/function.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 5956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

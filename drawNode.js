@@ -146,6 +146,95 @@ function drawnode(node){
    $(FFdata).append (TF);
    $(element).append( FFdata); 
    
+  
+  
+      EST.addEventListener("input", function(e) { 
+    var num = EST.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        EST.value= EST.defaultValue;
+         }else{
+        EST.defaultValue= num; 
+      }
+    
+  }, false);
+  
+  EST.addEventListener("input", function(e) { 
+    var num = EST.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        EST.value= EST.defaultValue;
+         }else{
+        EST.defaultValue= num; 
+      }
+    
+  }, false);
+  
+  EFT.addEventListener("input", function(e) { 
+    var num = EFT.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        EFT.value= EFT.defaultValue;
+         }else{
+        EFT.defaultValue= num; 
+      }
+    
+  }, false);
+  
+  
+  LST.addEventListener("input", function(e) { 
+    var num = LST.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        LST.value= LST.defaultValue;
+         }else{
+        LST.defaultValue= num; 
+      }
+    
+  }, false);
+  
+  
+  LFT.addEventListener("input", function(e) { 
+    var num = LFT.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        LFT.value= LFT.defaultValue;
+         }else{
+        LFT.defaultValue= num; 
+      }
+    
+  }, false);
+  
+  FF.addEventListener("input", function(e) { 
+    var num = FF.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        FF.value= FF.defaultValue;
+         }else{
+        FF.defaultValue= num; 
+      }
+    
+  }, false);
+  
+  
+  TF.addEventListener("input", function(e) { 
+    var num = TF.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        TF.value= TF.defaultValue;
+         }else{
+        TF.defaultValue= num; 
+      }
+    
+  }, false);
+  
    
    $(EST).change(function() {
      node.EST= $(EST).val();

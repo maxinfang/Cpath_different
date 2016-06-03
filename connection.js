@@ -60,7 +60,7 @@ function addConnection(link){
    
       var box= linkconn.getOverlays();
       if(box.isVisiable==true){box.setVisiable(false)} 
-       box[1].setVisible(false); 
+       box[1].setVisible(true); 
        }
        
 

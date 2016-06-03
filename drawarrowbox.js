@@ -54,6 +54,19 @@ function drawarrowbox(type,data,conn){
    $(datadiv).append(LTdata);
          $(LTdata).append(LT); 
        
+     LT.addEventListener("input", function(e) { 
+    var num = LT.value;
+     var message = validateInt(num);
+     if (message!="true"){
+         alert(message);
+        LT.value= LT.defaultValue;
+         }else{
+        LT.defaultValue= num; 
+      }
+    
+  }, false);
+       
+       
     $(LT).change(function() {
      data.LT= $(LT).val();
      updatelink(data,"LT",conn);
