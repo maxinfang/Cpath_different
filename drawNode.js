@@ -297,7 +297,7 @@ function drawnode(node){
    
   
     
-   $(datadiv).bind("dblclick","doubletap",
+   /*$(datadiv).bind("dblclick","doubletap",
      function() {  
      
        $("#"+datadivId).toggle("slow") ;
@@ -307,9 +307,9 @@ function drawnode(node){
       function() { 
      $("#"+datadivId).toggle("slow") ;
    }
-      );
+      );*/
    
-   if(node.activity==0){$(datadiv).hide()}
+   //if(node.activity==0){$(datadiv).hide()}
     
 //  if(mode != "correct") {$(datadiv).hide();  }
 

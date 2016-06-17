@@ -8,8 +8,7 @@ function addDroplist(options){
   }  
   
   if (typeof options == 'undefined'){
-   
-   
+    
     return $(newselect); 
   }
   else{ 
@@ -28,8 +27,7 @@ function addarrowDroplist(options){
     $(newselect).append('<option value='+o+' style="width:50;">'+arrayop[o]+'</option>');
   }  
   
-  if (typeof options == 'undefined'){
-   
+  if (typeof options == 'undefined'){ 
    
     return $(newselect); 
   }

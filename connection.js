@@ -1,7 +1,6 @@
 function addConnections(linklist){
  
-  var arraynodes=linklist.slice();
-  
+  var arraynodes=linklist.slice(); 
   for(n=0; n<arraynodes.length;n++){
     var link= arraynodes[n]; 
     addConnection(link);  
@@ -59,8 +58,8 @@ function addConnection(link){
     })
    
       var box= linkconn.getOverlays();
-      if(box.isVisiable==true){box.setVisiable(false)} 
-       box[1].setVisible(true); 
+    //  if(box.isVisiable==true){box.setVisiable(false)} 
+     //  box[1].setVisible(true); 
        }
        
 

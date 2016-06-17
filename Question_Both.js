@@ -195,11 +195,11 @@ $(document).ready(function()  {
       var box= conn.getOverlays();
       
     console.log(box);
-    if(box[1].visible==false){
+     
      box[1].setVisible(true);} 
      
      $(".datatable").jLzindex(); 
-   }
+   
     
     }  
    
