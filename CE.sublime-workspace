@@ -8,10 +8,10 @@
 	"buffers":
 	[
 		{
-			"file": "/Applications/MAMP/htdocs/DecisionTree/function.js",
+			"file": "drawNode.js",
 			"settings":
 			{
-				"buffer_size": 5956,
+				"buffer_size": 7797,
 				"line_ending": "Unix"
 			}
 		}
@@ -56,7 +56,8 @@
 	},
 	"expanded_folders":
 	[
-		"/Applications/MAMP/htdocs/DecisionTree"
+		"/Applications/MAMP/htdocs/Cpath_different",
+		"/Applications/MAMP/htdocs/Cpath_withdifferent_version"
 	],
 	"file_history":
 	[
@@ -110,6 +111,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"click",
+			"double",
 			"gethistory",
 			"getelementBy",
 			"gethistory",
@@ -150,19 +153,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/Applications/MAMP/htdocs/DecisionTree/function.js",
-					"semi_transient": true,
+					"file": "drawNode.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5956,
+						"buffer_size": 7797,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7092,
+								7092
 							]
 						],
 						"settings":
@@ -172,7 +175,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4262.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
