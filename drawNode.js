@@ -29,7 +29,8 @@ function drawnode(node){
       $(dragzone).uniqueId();
       var deleteId  =$(elem).attr("id");
       var currentId=$(dragzone).attr("id"); 
-      $(newdiv).append(deletezone);
+      if(mode =="student") { $(newdiv).append(deletezone);} 
+
       $(newdiv).append(dragzone);  
       addShape("C",dragzone);  
       
