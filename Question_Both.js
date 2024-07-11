@@ -20,10 +20,12 @@ var namespaceforEntry = array[0]+"_"+array[1]+"_entry";
 var namespaceforLabel= array[0]+"_"+array[1]+"_label"; 
 var namespaceforDuration= array[0]+"_"+array[1]+"_duration"; 
 var namespacefortype= array[0]+"_"+array[1]+"_type"; 
+var namespaceforAnswer= array[0]+"_"+array[1]+"_answer";
+var namespaceforInput = "input_"+array[1];
 var op= new Array();
 
  
-if(parent.document.getElementById(namespaceforSub))
+if(parent.document.getElementById(namespaceforAnswer))
  {mode ="submission";
 }
 else{
@@ -92,21 +94,8 @@ function getEntry(){
 
 function getHistory(){
   
- // var elem= parent.document.getElementsByTagName("input"); 
-        var elem=$("input[name^='ans.'][name$='.0']", window.parent.document) //parent.document.getElementsByName("ans.0.0");
-
-  
-  var arr = new Array();
-  var i = 0;
-  var iarr = 0;
-  var att;
-  for(; i < elem.length; i++) {
-    att = elem[i].getAttribute("type");
-    if(att =="text") {
-      return elem[i].value   
-    }  
-    
-  }
+  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
+  return parentintputbox[0].value;
   
   
 } 
@@ -114,10 +103,8 @@ function getHistory(){
 
 
 function getSubmission(){
-  var element=parent.document.getElementById(namespaceforSub);
-  
-  //console.log(element.innerHTML);
-  return element.innerHTML;
+  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
+  return parentintputbox[0].value;
 }
 
 var op = getEntry();
@@ -152,7 +139,6 @@ $(document).ready(function()  {
     }
     else{  
      redraw(history_page); 
-     addConnections(mylinks);
    }
    
  
