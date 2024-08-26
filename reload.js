@@ -14,7 +14,8 @@ function redraw(history){
     console.log(node);
     drawnode(node);
   }   
-  
+     addConnections(mylinks);
+
 }
   
 
