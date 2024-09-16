@@ -288,10 +288,7 @@ if(mode=="correct" && answer_type=="precedence") {
         linkedArray.push(linkedNode);  
    
    }  
- 
-    // console.log(du[root.activity]);
-    // console.log(du[root.activity]); 
-     //set children and parents; 
+  
      
      for (j=0;j<linkedArray.length;j++){ 
       

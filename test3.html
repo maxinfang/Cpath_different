@@ -1,5 +1,91 @@
-<TABLE><TR><TD WIDTH="20"></TD><TD><p>For the following project:</p><table> <tbody> <tr> <td>Activity</td> <td>Predecessors</td> <td>Duration</td> </tr> <tr style="display: none"> <td id="question_arrow_entry_0">Dummy Activity</td> <td>None</td> <td id="question_arrow_duration_0">0</td> </tr> <tr> <td id="question_arrow_entry_1">A</td> <td>None</td> <td id="question_arrow_duration_1">6</td> </tr> <tr> <td id="question_arrow_entry_2">B</td> <td>None</td> <td id="question_arrow_duration_2">9</td> </tr> <tr> <td id="question_arrow_entry_3">C</td> <td>None</td> <td id="question_arrow_duration_3">14</td> </tr> <tr> <td id="question_arrow_entry_4">D</td> <td>B</td> <td id="question_arrow_duration_4">17</td> </tr> <tr> <td id="question_arrow_entry_5">E</td> <td>C</td> <td id="question_arrow_duration_5">14</td> </tr> <tr> <td id="question_arrow_entry_6">F</td> <td>A, E</td> <td id="question_arrow_duration_6">20</td> </tr> <tr> <td id="question_arrow_entry_7">G</td> <td>A, D</td> <td id="question_arrow_duration_7">11</td> </tr> <tr> <td id="question_arrow_entry_8">H</td> <td>G</td> <td id="question_arrow_duration_8">9</td> </tr> <tr> <td id="question_arrow_entry_9">I</td> <td>A, D, E</td> <td id="question_arrow_duration_9">11</td> </tr> <tr> <td id="question_arrow_entry_10">J</td> <td>F</td> <td id="question_arrow_duration_10">12</td> </tr> <tr> <td id="question_arrow_entry_11">K</td> <td>H, I, J</td> <td id="question_arrow_duration_11">8</td> </tr> <tr> <td id="question_arrow_entry_12">L</td> <td>G</td> <td id="question_arrow_duration_12">19</td> </tr> <tr> <td id="question_arrow_entry_13">M</td> <td>H, I</td> <td id="question_arrow_duration_13">20</td> </tr> <tr> <td id="question_arrow_entry_14">N</td> <td>L</td> <td id="question_arrow_duration_14">7</td> </tr> </tbody></table><p>Draw an <span id="question_arrow_type">arrow</span> diagram and calculate the earliest start time, earliest finish time, latest start time, latest finish time, free float and total float for each activity.Use the following applet to answer the question.</p><div style="-webkit-overflow-scrolling: touch"><iframe height="800" id="question_arrow" src="Question_Both.html" width="1600">You will need a browser that supports iframes.</iframe><span class="response mathQuestion" id="response.0"><input class="blankenabled form-control" autocomplete="off" type="text" name="ans.0.0" value="" size="60">
-</span></div></TD><TD WIDTH="20"></TD><TD><div align='center'><i class="fa fa-lg fa-times-circle incorrectIndicator" title="Incorrect"></i><br><b><font color='#CC0000'>Incorrect</font></b></div>
-   
+<table>
+  <tbody>
+      <tr>
+          <td style="text-align: center;">Activity</td>
+          <td style="text-align: center;">Predecessors</td>
+          <td style="text-align: center;">Duration</td>
+      </tr>
+      <tr style="display: none">
+          <td id="question_overlapping_entry_0">Dummy Activity</td>
+          <td>None</td>
+          <td id="question_overlapping_duration_0">0</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_1" style="text-align: center;">A</td>
+          <td>None</td>
+          <td id="question_overlapping_duration_1" style="text-align: center;">19</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_2" style="text-align: center;">B</td>
+          <td>A SF: LT=2</td>
+          <td id="question_overlapping_duration_2" style="text-align: center;">17</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_3" style="text-align: center;">C</td>
+          <td>B FF: LT=3</td>
+          <td id="question_overlapping_duration_3" style="text-align: center;">19</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_4" style="text-align: center;">D</td>
+          <td>C FS: LT=1</td>
+          <td id="question_overlapping_duration_4" style="text-align: center;">10</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_5" style="text-align: center;">E</td>
+          <td>A SF: LT=3</td>
+          <td id="question_overlapping_duration_5" style="text-align: center;">11</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_6" style="text-align: center;">F</td>
+          <td>B FF: LT=4,  E FF: LT=5</td>
+          <td id="question_overlapping_duration_6" style="text-align: center;">13</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_7" style="text-align: center;">G</td>
+          <td>C FS: LT=2,  F FS: LT=3</td>
+          <td id="question_overlapping_duration_7" style="text-align: center;">16</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_8" style="text-align: center;">H</td>
+          <td>D SS: LT=4,  G SS: LT=5</td>
+          <td id="question_overlapping_duration_8" style="text-align: center;">11</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_9" style="text-align: center;">I</td>
+          <td>E FF: LT=6</td>
+          <td id="question_overlapping_duration_9" style="text-align: center;">18</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_10" style="text-align: center;">J</td>
+          <td>F FS: LT=4,  I FS: LT=5</td>
+          <td id="question_overlapping_duration_10" style="text-align: center;">6</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_11" style="text-align: center;">K</td>
+          <td>G SS: LT=6,  J SS: LT=7</td>
+          <td id="question_overlapping_duration_11" style="text-align: center;">11</td>
+      </tr>
+      <tr>
+          <td id="question_overlapping_entry_12" style="text-align: center;">L</td>
+          <td>H SF: LT=2,  K SF: LT=3</td>
+          <td id="question_overlapping_duration_12" style="text-align: center;">9</td>
+      </tr>
+  </tbody>
+</table>
 
- 
+<p>Draw a precedence<span id="question_overlapping_type" style="display: none">overlapping</span> diagram and calculate the earliest start time, earliest finish time, latest start time, latest finish time, free float and total float for each activity. Use the following applet to answer the question.</p>
+
+<div style="-webkit-overflow-scrolling: touch"><iframe height="1000" id="question_overlapping" src="/Question_Both.html" width="1600">You will need a browser that supports iframes.</iframe></div>
+<p style="display: display"><input type="text" name="q18741773:1_input_overlapping" id="q18741773:1_input_overlapping" size="16.5" style="width: 13.6em" autocapitalize="none" spellcheck="false" class="maxima-string" value="" readonly="readonly" /> <div class="stackinputfeedback standard empty" id="q18741773:1_input_overlapping_val"></div></p><p style="display: display"><br></p><p style="display: display">String with correct numbers:</p><p style="display: display">Cc1c7.997159004211426c7.997159004211426cDd1d0d19d11d30d8d11Cc2c7.997159004211426c277.9971618652344cDd2d0d17d0d17d0d0Cc3c7.997159004211426c550cDd3d1d20d5d24d0d4Cc4c7.997159004211426c821.9744262695312cDd4d21d31d28d38d4d7Cc5c223.99147033691406c277.9971618652344cDd5d0d11d3d14d1d3Cc6c223.99147033691406c550cDd6d8d21d8d21d0d0Cc7c223.99147033691406c821.9744262695312cDd7d24d40d26d42d0d2Cc8c223.99147033691406c1093.991455078125cDd8d29d40d32d43d3d3Cc9c439.98577880859375c550cDd9d0d18d2d20d2d2Cc10c439.98577880859375c821.9744262695312cDd10d25d31d25d31d0d0Cc11c439.98577880859375c1093.991455078125cDd11d32d43d32d43d0d0Cc12c439.98577880859375c1365.9942626953125cDd12d26d35d34d43d8d8aLc1c5ccDd3d3Lc1c2ccDd3d2Lc2c3ccDd2d3Lc2c6ccDd2d4Lc5c6ccDd2d5Lc5c9ccDd2d6Lc3c4ccDd0d1Lc6c10ccDd0d4Lc9c10ccDd0d5Lc6c7ccDd0d3Lc3c7ccDd0d2Lc4c8ccDd1d4Lc7c8ccDd1d5Lc10c11ccDd1d7Lc7c11ccDd1d6Lc8c12ccDd3d2Lc11c12ccDd3d3<br></p></div><div class="outcome clearfix"><h4 class="accesshide">Feedback</h4><div class="feedback"><div class="generalfeedback"><p>The correct answer is given by:</p>
+
+<div id="resizable"><iframe height="750" id="question_overlapping_correct" src="/Answer_Both.html" width="1600">You will need a browser that supports iframes.</iframe></div>
+
+<p style="display: display">Correct String: <span id="question_overlapping_answer">Cc1c8c8cDd1ddddddCc2c8c278cDd2ddddddCc3c8c550cDd3ddddddCc4c8c822cDd4ddddddCc5c224c278cDd5ddddddCc6c224c550cDd6ddddddCc7c224c822cDd7ddddddCc8c224c1094cDd8ddddddCc9c440c550cDd9ddddddCc10c440c822cDd10ddddddCc11c440c1094cDd11ddddddCc12c440c1366cDd12ddddddaLc1c5ccDd3d3Lc1c2ccDd3d2Lc2c3ccDd2d3Lc2c6ccDd2d4Lc5c6ccDd2d5Lc5c9ccDd2d6Lc3c4ccDd0d1Lc6c10ccDd0d4Lc9c10ccDd0d5Lc6c7ccDd0d3Lc3c7ccDd0d2Lc4c8ccDd1d4Lc7c8ccDd1d5Lc10c11ccDd1d7Lc7c11ccDd1d6Lc8c12ccDd3d2Lc11c12ccDd3d3</span></p></div><div class="rightanswer"><hr /><p></p></div></div></div></div></div>
+  <div id="previewcontrols" class="controls input-group">
+      <input type="submit" name="restart" value="Start again" class="btn btn-secondary mr-1 mb-1" id="id_restart_question_preview" >
+      <input type="submit" name="save" value="Save" class="btn btn-secondary mr-1 mb-1" id="id_save_question_preview"  disabled="disabled">
+      <input type="submit" name="fill" value="Fill in correct responses" class="btn btn-secondary mr-1 mb-1"  disabled="disabled">
+      <input type="submit" name="finish" value="Submit and finish" class="btn btn-secondary mr-1 mb-1" id="id_finish_question_preview"  disabled="disabled">
+          <a href="https://moodle.telt.unsw.edu.au/question/edit.php?courseid=87069&amp;cat=1680591%2C12199006&amp;qpage=0&amp;recurse=1&amp;showhidden=0&amp;qbshowtext=0&amp;deleteall=1" class="btn btn-secondary mr-1 mb-1" role="button">Close preview</a>
+  </div>
+</form>
