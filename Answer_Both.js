@@ -4,6 +4,12 @@
  var answer_type="default";
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
+
+
+function getSubmission(){
+  parentintputbox=$("input[name*='" + namespaceforInput + "']", window.parent.document);
+  return parentintputbox[0].value;
+}
  
 
  
@@ -43,6 +49,7 @@ function getType(){
 
 
 }
+
 
 
 function getDuration(){
@@ -153,7 +160,7 @@ $(document).ready(function()  {
                     if(history_page == "" ){ 
                     }
                     else{   
-                    redraw(getCorrectAnswer(),getSubmission());   
+                      reload(getCorrectAnswer(),getSubmission());   
                    }
                    
                    

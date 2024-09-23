@@ -1,5 +1,5 @@
 
-function redraw(student_string,correct_string){
+function reload(student_string,correct_string){
   
 answer_Nodes=deserialiseC(correct_string);
 answer_Links=deserialiseL(correct_string);  
@@ -246,6 +246,8 @@ mylinks=deserialiseL(student_string);
          }
        }
      }
+
+     
      
      
     for(n=0; n<myNodes.length;n++){ 
