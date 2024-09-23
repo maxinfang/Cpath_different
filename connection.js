@@ -46,9 +46,7 @@ function addConnection(link){
              }]); 
   
   $(".datatable").jLzindex();
-  console.log("ttttt");
-  console.log(link.LT);
-   console.log("ttttt");
+ 
   
   if(link.activity==0 &&(link.LT==""||link.LT=="0")   ){
     

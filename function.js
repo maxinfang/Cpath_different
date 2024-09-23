@@ -99,8 +99,24 @@ function deserialiseL(string){
  
 }
 
+if (!Array.prototype.compare)
+  {
+  Array.prototype.compare = function(testArr) {
+  
+      if (this.length != testArr.length) return false;
+      for (var i = 0; i < testArr.length; i++) {
+          if ((this[i] == "" && testArr[i] == "0") ||
+          (this[i] == "0" && testArr[i] == "")) {
+                  continue;
+          }
+          else if (this[i] != testArr[i]) return false;
+      }
+    console.log("found!");
+      return true;
+  }
+    }
 
-
+ 
 
 function deserialiseC(string){ 
  var array= new Array(); 

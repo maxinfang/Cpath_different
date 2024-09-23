@@ -153,7 +153,7 @@ $(document).ready(function()  {
                     if(history_page == "" ){ 
                     }
                     else{   
-                    redraw(history_page);   
+                    redraw(getCorrectAnswer(),getSubmission());   
                    }
                    
                    
