@@ -1,4 +1,4 @@
-function redraw(history){
+function reload(history){
   
  myNodes=deserialiseC(history);
  mylinks=deserialiseL(history);
@@ -7,8 +7,7 @@ function redraw(history){
  if (myNodes == []) return;
  
  if(mode == "submission")
-  { for(n=0; n<myNodes.length;n++){ 
-    
+  { for(n=0; n<myNodes.length;n++){  
     var node= myNodes[n];
     console.log("empty");
     console.log(node);
@@ -19,7 +18,6 @@ function redraw(history){
 }
   
 
-   
 if( mode=="student" && answer_type=="overlapping"){  for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     console.log(node);
@@ -244,18 +242,17 @@ for (j=0;j<linkedArray.length;j++){ console.log(linkedArray[j]);}
       }
     }
    
-   
-   
+    
     
     for(n=0; n<myNodes.length;n++){ 
     var node= myNodes[n];
     console.log(node);
     drawnode(node);
   }   
-    
- 
-for (j=0;j<linkedArray.length;j++){console.log(linkedArray[j]);
-                                   }
+     
+for (j=0;j<linkedArray.length;j++){
+    console.log(linkedArray[j]);
+  }
      addConnections(mylinks); 
 } 
   
@@ -271,10 +268,7 @@ for (j=0;j<linkedArray.length;j++){console.log(linkedArray[j]);
    return "none";
  } 
    
-  
- 
-  
-  
+   
 if(mode=="correct" && answer_type=="precedence") { 
  var root = new Node();
  root = findrootnode();  

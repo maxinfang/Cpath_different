@@ -257,7 +257,7 @@ function deserialiseC(string){
 
 
 
-function findrootnode(){
+function findrootnode(myNodes){
 
  for(var m=0; m<myNodes.length;m++){ 
    
@@ -279,7 +279,6 @@ function findrootnode(){
  
 
 }
-
 
 }
 

@@ -160,7 +160,7 @@ $(document).ready(function()  {
                     if(history_page == "" ){ 
                     }
                     else{   
-                      reload(getCorrectAnswer(),getSubmission());   
+                      redraw(getCorrectAnswer(),getSubmission());   
                    }
                    
                    

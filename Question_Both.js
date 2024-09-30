@@ -138,7 +138,7 @@ $(document).ready(function()  {
     if(history_page == "" ){ 
     }
     else{  
-     redraw(history_page); 
+     reload(history_page); 
    }
    
  
