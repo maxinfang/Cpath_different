@@ -1,10 +1,27 @@
 
 
 var Color="#fa0000";
+
+var left_end="#445566";
+var right_end="#445566";
+
 if(mode=="correct") { Color= "#5cc902"};
 if(mode=="submission") { Color= "#0060bf"};  
 
-function addShape(type,dragzone){
+
+
+function addShape(type,dragzone,node){
+ 
+  if(node.color == "red"){
+    Color="#d9534f";left_end="#d9534f";right_end="#d9534f";}
+   else if(mode=="submission"){Color="#5cc902";}else{Color="#0060bf"; } 
+
+   if (node.color == "green") {
+    Color = "#5cc902";
+  }
+
+  if (node.color == "orange") Color = "#ffa500";
+   
   if (type=="C") {addCircle(dragzone);} 
 }
  

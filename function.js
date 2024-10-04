@@ -257,7 +257,7 @@ function deserialiseC(string){
 
 
 
-function findrootnode(myNodes){
+function findrootnode(myNodes,mylinks){
 
  for(var m=0; m<myNodes.length;m++){ 
    
@@ -268,12 +268,11 @@ function findrootnode(myNodes){
    for(var n=0; n<mylinks.length;n++){
     var link=mylinks[n];
     if (link.t==id) {
-      count++;
-      console.log("link:++"+link);
+      count++; 
     }
+
   }
-  if (count==0) {
-   console.log("root:"+id); 
+  if (count==0) { 
    return findnode(id);
  }
  
