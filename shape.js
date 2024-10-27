@@ -24,6 +24,9 @@ function addShape(type,dragzone,node){
    
   if (type=="C") {addCircle(dragzone);} 
 }
+
+// Todo update this to more flex functionality
+
  
  
 function addCircle(dragzone) {
