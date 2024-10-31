@@ -1,4 +1,5 @@
 function redraw(student_string, correct_string) {
+ 
 
   myNodes = deserialiseC(student_string);
   mylinks = deserialiseL(student_string);
@@ -14,8 +15,7 @@ function redraw(student_string, correct_string) {
     }
     addConnections(myinks);
   }
-
-
+ 
 
   if (mode == "student" && answer_type == "overlapping") {
    /* for (n = 0; n < myNodes.length; n++) {
@@ -37,6 +37,7 @@ function redraw(student_string, correct_string) {
   if (mode == "correct" && answer_type == "overlapping") {
     var root = new Node();
     root = findrootnode(answer_Nodes, answer_Links);
+    console.log(root);
     var linkedArray = new Array();
     var linkedArray2 = new Array();
     for (n = 0; n < answer_Nodes.length; n++) {
@@ -59,12 +60,13 @@ function redraw(student_string, correct_string) {
         if (link.h == linkedNode.id) {
           children.push(findlinkednode(link.t));
         }
-      }
+      }  
 
       linkedNode.prevNode = parents;
       linkedNode.nextNodes = children;
     }
 
+ 
     for (j = 0; j < linkedArray.length; j++) {
       var linkedNode = linkedArray[j];
       var predessors = Array();
@@ -89,20 +91,26 @@ function redraw(student_string, correct_string) {
       }
       linkedNode.nextconnectors = suclink;
     }
+   //ABOVE IS TO SET UP THE LINKED ARRAY
+
 
     var linkedrootnode = findlinkednode(root.id);
     recursive(linkedrootnode);
     var deep = linkedrootnode.level;
 
-    for (var n = deep; n > 0; n--) {
+     for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
-        var lnode = linkedArray[j];
+        var lnode = linkedArray[j]; 
+        console.log (n);
         if (lnode.level == n) {
           var precon = lnode.prevconnectors;
           var _array = new Array();
           _array.push(0);
-          for (var k = 0; k < precon.length; k++) { 
+          console.log(precon.length);
+          for (var k = 0; k < precon.length; k++) {  
+            if (precon[k] == null) continue;
             var con = precon[k];
+            console.log(con);
             if (con.activity == 0) {
               var parentlinkednode = findlinkednode(con.h);
               var parentnode = parentlinkednode.node;
@@ -158,7 +166,7 @@ function redraw(student_string, correct_string) {
           _array2.push(project_duration);
           for (var k = 0; k < nextcon.length; k++) {
             var con = nextcon[k];
-
+            if (con == null) continue;
             //finish to start;
             if (con.activity == 0) {
               var parentlinkednode = findlinkednode(con.t);
