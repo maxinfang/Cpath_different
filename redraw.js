@@ -222,6 +222,9 @@ function redraw(student_string, correct_string) {
         }
       }
     }
+
+
+
     //add some function here to compare to string
     // update the color of the node
    // Compare correct nodes to student nodes
@@ -233,7 +236,10 @@ function redraw(student_string, correct_string) {
        
        if (studentNode) { 
         correctNode.color = "green"; // Correct 
-       }
+        if (correctNode.EFT !== studentNode.EFT || correctNode.LFT !== studentNode.LFT || correctNode.EST !== studentNode.EST || correctNode.LST !== studentNode.LST || correctNode.TF !== studentNode.TF || correctNode.FF !== studentNode.FF ) {
+          correctNode.color = "orange"; // Partially correct
+        }
+      }
        else {
         correctNode.color = "red"; // Incorrect
        }
