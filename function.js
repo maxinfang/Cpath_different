@@ -468,15 +468,14 @@ function sentToparentPage()
 
 function calculateEFT(node){
  node.EFT= +du[node.activity] +  +node.EST;
- if( node.EFT==0){node.EFT="0"}
-   return node.EFT;
+ 
 }
 
 
 
 
 function  calculateEST(node,value){
-  if(value == 0) {value = "0";}
+ 
   node.EST=value;
   return true;
   
@@ -487,7 +486,7 @@ function  calculateEST(node,value){
 
 function calculateLFT(node,value){
   //if(value == ) {value=node.EFT;}
-  if (value==0) value="0";
+   
   // console.log(node.EFT);
   node.LFT=value;
   
@@ -497,7 +496,7 @@ function calculateLFT(node,value){
 
 function calculateLST(node){
  node.LST=    +node.LFT - +du[node.activity];
- if(node.LST==0) {node.LST="0";}
+ 
  return node.EFT;
 
 }
@@ -506,23 +505,20 @@ function calculateFFTF(node,value){
   
  node.FF=   value  - node.EFT;
  node.TF=    +node.LFT - +node.EFT;
- if(node.FF == 0) { node.FF ="0";}
- if(node.TF == 0)  { node.TF= "0";}
+ 
  
 }
 
 
 function calculateTF(node){
   node.TF=  +node.LFT - +node.EFT; 
-  if(node.TF == 0)  { node.TF= "0";}
+  
 }
 
 
 function calculateFF(node,value){
   node.FF=value;
-  
-  
-  if(node.FF == 0)  { node.FF= "0";}
+   
 }
 
 function deleteNode(node)
