@@ -136,13 +136,13 @@ function deserialiseC(string){
  
        var dataAttribute=shapeanddata[1].split('d');
       // console.log(dataAttribute);
-      node.activity=dataAttribute[1];
-      node.EST=dataAttribute[2];
-      node.EFT=dataAttribute[3];
-      node.LST=dataAttribute[4];
-      node.LFT=dataAttribute[5];
-      node.FF=dataAttribute[6];
-      node.TF=dataAttribute[7]; 
+      node.activity=parseInt(dataAttribute[1]);
+      node.EST=parseInt(dataAttribute[2]);
+      node.EFT=parseInt(dataAttribute[3]);
+      node.LST=parseInt(dataAttribute[4]);
+      node.LFT=parseInt(dataAttribute[5]);
+      node.FF=parseInt(dataAttribute[6]);
+      node.TF=parseInt(dataAttribute[7]); 
       array.push(node); 
     }  
     return array;   

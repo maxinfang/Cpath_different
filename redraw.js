@@ -233,7 +233,8 @@ function redraw(student_string, correct_string) {
      for (let i = 0; i < answer_Nodes.length; i++) {
        const correctNode = answer_Nodes[i];
        const studentNode = myNodes.find(node => node.activity === correctNode.activity);
-       
+      console.log(studentNode);
+      console.log(correctNode);
        if (studentNode) { 
         correctNode.color = "green"; // Correct 
         if (correctNode.EFT !== studentNode.EFT || correctNode.LFT !== studentNode.LFT || correctNode.EST !== studentNode.EST || correctNode.LST !== studentNode.LST || correctNode.TF !== studentNode.TF || correctNode.FF !== studentNode.FF ) {
