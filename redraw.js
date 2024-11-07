@@ -37,60 +37,11 @@ function redraw(student_string, correct_string) {
   if (mode == "correct" && answer_type == "overlapping") {
     var root = new Node();
     root = findrootnode(answer_Nodes, answer_Links);
-    console.log(root);
-    var linkedArray = new Array();
-    var linkedArray2 = new Array();
-    for (n = 0; n < answer_Nodes.length; n++) {
-      var node = answer_Nodes[n];
-      var linkedNode = new NodeClass(node);
-      linkedArray.push(linkedNode);
-      linkedArray2.push(linkedNode);
-    }
-
-    for (j = 0; j < linkedArray.length; j++) {
-      var linkedNode = linkedArray[j];
-      var children = new Array();
-      var parents = new Array();
-      for (var n = 0; n < answer_Links.length; n++) {
-        var link = answer_Links[n];
-        if (link.t == linkedNode.id) {
-          parents.push(findlinkednode(link.h));
-        }
-
-        if (link.h == linkedNode.id) {
-          children.push(findlinkednode(link.t));
-        }
-      }  
-
-      linkedNode.prevNode = parents;
-      linkedNode.nextNodes = children;
-    }
-
  
-    for (j = 0; j < linkedArray.length; j++) {
-      var linkedNode = linkedArray[j];
-      var predessors = Array();
-      var successors = Array();
-
-      predessors = linkedNode.prevNode;
-      successors = linkedNode.nextNodes;
-
-      var prevlink = Array();
-      for (p = 0; p < predessors.length; p++) {
-        var head = predessors[p].id;
-        var link = findlink(head, linkedNode.id);
-        prevlink.push(link);
-      }
-      linkedNode.prevconnectors = prevlink;
-
-      var suclink = Array();
-      for (s = 0; s < successors.length; s++) {
-        var tail = successors[s].id;
-        var link = findlink(linkedNode.id, tail);
-        suclink.push(link);
-      }
-      linkedNode.nextconnectors = suclink;
-    }
+    var linkedArray = setupLinkedArray(answer_Nodes, answer_Links);
+    
+    //also need to set up the connectioons in the function can you also make it as function
+     
    //ABOVE IS TO SET UP THE LINKED ARRAY
 
 
@@ -569,4 +520,83 @@ function redraw(student_string, correct_string) {
 
     addConnections(mylinks);
   }
+}
+
+function setupLinkedArray(nodes, links) {
+  var linkedArray = [];
+  var linkedArray2 = [];
+
+  for (let n = 0; n < nodes.length; n++) {
+    var node = nodes[n];
+    var linkedNode = new NodeClass(node);
+    linkedArray.push(linkedNode);
+    linkedArray2.push(linkedNode);
+  }
+
+  for (let j = 0; j < linkedArray.length; j++) {
+    var linkedNode = linkedArray[j];
+    var children = [];
+    var parents = [];
+
+    for (let n = 0; n < links.length; n++) {
+      var link = links[n];
+      if (link.t === linkedNode.id) {
+        parents.push(findlinkednode(link.h));
+      }
+      if (link.h === linkedNode.id) {
+        children.push(findlinkednode(link.t));
+      }
+    }
+
+    linkedNode.prevNode = parents;
+    linkedNode.nextNodes = children;
+  }
+
+
+  for (j = 0; j < linkedArray.length; j++) {
+    var linkedNode = linkedArray[j];
+    var children = new Array();
+    var parents = new Array();
+    for (var n = 0; n < answer_Links.length; n++) {
+      var link = answer_Links[n];
+      if (link.t == linkedNode.id) {
+        parents.push(findlinkednode(link.h));
+      }
+
+      if (link.h == linkedNode.id) {
+        children.push(findlinkednode(link.t));
+      }
+    }  
+
+    linkedNode.prevNode = parents;
+    linkedNode.nextNodes = children;
+  }
+
+
+  for (j = 0; j < linkedArray.length; j++) {
+    var linkedNode = linkedArray[j];
+    var predessors = Array();
+    var successors = Array();
+
+    predessors = linkedNode.prevNode;
+    successors = linkedNode.nextNodes;
+
+    var prevlink = Array();
+    for (p = 0; p < predessors.length; p++) {
+      var head = predessors[p].id;
+      var link = findlink(head, linkedNode.id);
+      prevlink.push(link);
+    }
+    linkedNode.prevconnectors = prevlink;
+
+    var suclink = Array();
+    for (s = 0; s < successors.length; s++) {
+      var tail = successors[s].id;
+      var link = findlink(linkedNode.id, tail);
+      suclink.push(link);
+    }
+    linkedNode.nextconnectors = suclink;
+  }
+
+  return linkedArray;
 }
