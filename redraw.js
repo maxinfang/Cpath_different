@@ -42,9 +42,10 @@ function redraw(student_string, correct_string) {
     //also need to set up the connectioons in the function can you also make it as function
      
    //ABOVE IS TO SET UP THE LINKED ARRAY
-
-
+    console.log(root);
+    console.log(linkedArray2);
     var linkedrootnode = findlinkednode(root.id,linkedArray2);
+   
     recursive(linkedrootnode);
     var deep = linkedrootnode.level;
 
@@ -221,10 +222,10 @@ function redraw(student_string, correct_string) {
        for (let n = 0; n < mylinks.length; n++) {
          var link = mylinks[n];
          if (link.t === linkedNode.activity) {
-           parents.push(findlinkednode(link.h));
+           parents.push(findlinkednode(link.h,linkedArray2));
          }
          if (link.h === linkedNode.activity) {
-           children.push(findlinkednode(link.t));
+           children.push(findlinkednode(link.t,linkedArray2));
          }
        }
 
@@ -264,7 +265,93 @@ function redraw(student_string, correct_string) {
     addConnections(answer_Links);
   }
 
-  function findlinkednode(id) {
+
+function setupLinkedArray(nodes, links) {
+  var linkedArray = [];
+  var linkedArray2 = [];
+
+  for (let n = 0; n < nodes.length; n++) {
+    var node = nodes[n];
+    var linkedNode = new NodeClass(node);
+    linkedArray.push(linkedNode);
+    linkedArray2.push(linkedNode);
+  }
+
+  for (let j = 0; j < linkedArray.length; j++) {
+    var linkedNode = linkedArray[j];
+    var children = [];
+    var parents = [];
+
+    for (let n = 0; n < links.length; n++) {
+      var link = links[n];
+      if (link.t === linkedNode.id) {
+        parents.push(findlinkednode(link.h, linkedArray2));
+      }
+      if (link.h === linkedNode.id) {
+        children.push(findlinkednode(link.t, linkedArray2));
+      }
+    }
+
+    linkedNode.prevNode = parents;
+    linkedNode.nextNodes = children;
+  }
+
+
+  for (j = 0; j < linkedArray.length; j++) {
+    var linkedNode = linkedArray[j];
+    var children = new Array();
+    var parents = new Array();
+    for (var n = 0; n < answer_Links.length; n++) {
+      var link = answer_Links[n];
+      if (link.t == linkedNode.id) {
+        parents.push(findlinkednode(link.h,linkedArray2));
+      }
+
+      if (link.h == linkedNode.id) {
+        children.push(findlinkednode(link.t,linkedArray2));
+      }
+    }  
+
+    linkedNode.prevNode = parents;
+    linkedNode.nextNodes = children;
+  }
+
+
+  for (j = 0; j < linkedArray.length; j++) {
+    var linkedNode = linkedArray[j];
+    var predessors = Array();
+    var successors = Array();
+
+    predessors = linkedNode.prevNode;
+    successors = linkedNode.nextNodes;
+
+    var prevlink = Array();
+    for (p = 0; p < predessors.length; p++) {
+      var head = predessors[p].id;
+      var link = findlink(head, linkedNode.id);
+      prevlink.push(link);
+    }
+    linkedNode.prevconnectors = prevlink;
+
+    var suclink = Array();
+    for (s = 0; s < successors.length; s++) {
+      var tail = successors[s].id;
+      var link = findlink(linkedNode.id, tail);
+      suclink.push(link);
+    }
+    linkedNode.nextconnectors = suclink;
+  }
+
+  return {linkedArray, linkedArray2}
+}
+
+function deepCopyArray(array) {
+  return array.map(item => {
+    return JSON.parse(JSON.stringify(item));
+  });
+}
+  
+  function findlinkednode(id, linkedArray2) {
     for (x = 0; x < linkedArray2.length; x++) {
       var li = linkedArray2[x];
       if (li.id == id) {
@@ -520,82 +607,4 @@ function redraw(student_string, correct_string) {
     addConnections(mylinks);
   }
 }
-
-function setupLinkedArray(nodes, links) {
-  var linkedArray = [];
-  var linkedArray2 = [];
-
-  for (let n = 0; n < nodes.length; n++) {
-    var node = nodes[n];
-    var linkedNode = new NodeClass(node);
-    linkedArray.push(linkedNode);
-    linkedArray2.push(linkedNode);
-  }
-
-  for (let j = 0; j < linkedArray.length; j++) {
-    var linkedNode = linkedArray[j];
-    var children = [];
-    var parents = [];
-
-    for (let n = 0; n < links.length; n++) {
-      var link = links[n];
-      if (link.t === linkedNode.id) {
-        parents.push(findlinkednode(link.h));
-      }
-      if (link.h === linkedNode.id) {
-        children.push(findlinkednode(link.t));
-      }
-    }
-
-    linkedNode.prevNode = parents;
-    linkedNode.nextNodes = children;
-  }
-
-
-  for (j = 0; j < linkedArray.length; j++) {
-    var linkedNode = linkedArray[j];
-    var children = new Array();
-    var parents = new Array();
-    for (var n = 0; n < answer_Links.length; n++) {
-      var link = answer_Links[n];
-      if (link.t == linkedNode.id) {
-        parents.push(findlinkednode(link.h));
-      }
-
-      if (link.h == linkedNode.id) {
-        children.push(findlinkednode(link.t));
-      }
-    }  
-
-    linkedNode.prevNode = parents;
-    linkedNode.nextNodes = children;
-  }
-
-
-  for (j = 0; j < linkedArray.length; j++) {
-    var linkedNode = linkedArray[j];
-    var predessors = Array();
-    var successors = Array();
-
-    predessors = linkedNode.prevNode;
-    successors = linkedNode.nextNodes;
-
-    var prevlink = Array();
-    for (p = 0; p < predessors.length; p++) {
-      var head = predessors[p].id;
-      var link = findlink(head, linkedNode.id);
-      prevlink.push(link);
-    }
-    linkedNode.prevconnectors = prevlink;
-
-    var suclink = Array();
-    for (s = 0; s < successors.length; s++) {
-      var tail = successors[s].id;
-      var link = findlink(linkedNode.id, tail);
-      suclink.push(link);
-    }
-    linkedNode.nextconnectors = suclink;
-  }
-
-  return linkedArray;
-}
+ 
