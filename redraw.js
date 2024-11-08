@@ -38,14 +38,13 @@ function redraw(student_string, correct_string) {
     var root = new Node();
     root = findrootnode(answer_Nodes, answer_Links);
  
-    var linkedArray = setupLinkedArray(answer_Nodes, answer_Links);
-    
+    var { linkedArray, linkedArray2 } = setupLinkedArray(answer_Nodes, answer_Links);
     //also need to set up the connectioons in the function can you also make it as function
      
    //ABOVE IS TO SET UP THE LINKED ARRAY
 
 
-    var linkedrootnode = findlinkednode(root.id);
+    var linkedrootnode = findlinkednode(root.id,linkedArray2);
     recursive(linkedrootnode);
     var deep = linkedrootnode.level;
 
@@ -63,24 +62,24 @@ function redraw(student_string, correct_string) {
             var con = precon[k];
             console.log(con);
             if (con.activity == 0) {
-              var parentlinkednode = findlinkednode(con.h);
+              var parentlinkednode = findlinkednode(con.h,linkedArray2);
               var parentnode = parentlinkednode.node;
               _array.push(+parentnode.EFT + +con.LT);
             }
             if (con.activity == 1) {
-              var parentlinkednode = findlinkednode(con.h);
+              var parentlinkednode = findlinkednode(con.h,linkedArray2);
               var parentnode = parentlinkednode.node;
               _array.push(+parentnode.EST + +con.LT);
             }
             if (con.activity == 2) {
-              var parentlinkednode = findlinkednode(con.h);
+              var parentlinkednode = findlinkednode(con.h,linkedArray2);
               var parentnode = parentlinkednode.node;
               var duration = du[lnode.node.activity];
               var temp = +parentnode.EFT + +con.LT - +duration;
               _array.push(temp);
             }
             if (con.activity == 3) {
-              var parentlinkednode = findlinkednode(con.h);
+              var parentlinkednode = findlinkednode(con.h,linkedArray2);
               var parentnode = parentlinkednode.node;
               var duration = du[lnode.node.activity];
               var temp = +parentnode.EST + +con.LT - +duration;
@@ -120,7 +119,7 @@ function redraw(student_string, correct_string) {
             if (con == null) continue;
             //finish to start;
             if (con.activity == 0) {
-              var parentlinkednode = findlinkednode(con.t);
+              var parentlinkednode = findlinkednode(con.t,linkedArray2);
               var parentnode = parentlinkednode.node;
               _array.push(+parentnode.LST + -+con.LT);
 
@@ -130,7 +129,7 @@ function redraw(student_string, correct_string) {
             }
             //start to start
             if (con.activity == 1) {
-              var parentlinkednode = findlinkednode(con.t);
+              var parentlinkednode = findlinkednode(con.t,linkedArray2);
               var parentnode = parentlinkednode.node;
               var duration = du[lnode.node.activity];
               _array.push(+parentnode.LST - con.LT + +duration);
@@ -141,7 +140,7 @@ function redraw(student_string, correct_string) {
             }
             //finish to finish
             if (con.activity == 2) {
-              var parentlinkednode = findlinkednode(con.t);
+              var parentlinkednode = findlinkednode(con.t,linkedArray2);
               var parentnode = parentlinkednode.node;
               var duration = du[lnode.node.activity];
               var temp = +parentnode.LFT - +con.LT;
@@ -153,7 +152,7 @@ function redraw(student_string, correct_string) {
 
             // star to finish
             if (con.activity == 3) {
-              var parentlinkednode = findlinkednode(con.t);
+              var parentlinkednode = findlinkednode(con.t,linkedArray2);
               var parentnode = parentlinkednode.node;
               var duration = du[lnode.node.activity];
               var temp = +parentnode.LFT - +con.LT + +duration;
@@ -234,7 +233,7 @@ function redraw(student_string, correct_string) {
      }
 
      // Calculate values
-     var linkedrootnode = findlinkednode(root.activity);
+     var linkedrootnode = findlinkednode(root.activity,linkedArray2);
      recursive(linkedrootnode);
 
      // Perform calculations (assuming these functions exist)
