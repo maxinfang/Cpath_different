@@ -251,6 +251,73 @@ function deserialiseC(string){
    
  }
 }
+function findsubnode(id){ 
+  for(n=0; n<submissionNodes.length;n++){
+    
+    var node=submissionNodes[n];
+    
+    if (node.id==id) {
+     return node; 
+   } 
+   
+   
+ }
+}    
+       
+function findsubrootnode(){
+
+ for(var m=0; m<submissionNodes.length;m++){ 
+   
+   var node= submissionNodes[m]; 
+   var id = node.id; 
+   
+   var count =0;
+   for(var n=0; n<submissionlinks.length;n++){
+    var link=submissionlinks[n];
+    if (link.t==id) {
+      count++;
+      console.log("link:++"+link);
+    }
+  }
+  if (count==0) {
+   console.log("root:"+id); 
+   return findsubnode(id);
+ }
+ 
+
+}
+
+
+}
+
+
+
+function findrootnode(){
+
+ for(var m=0; m<myNodes.length;m++){ 
+   
+   var node= myNodes[m]; 
+   var id = node.id; 
+   
+   var count =0;
+   for(var n=0; n<mylinks.length;n++){
+    var link=mylinks[n];
+    if (link.t==id) {
+      count++;
+      console.log("link:++"+link);
+    }
+  }
+  if (count==0) {
+   console.log("root:"+id); 
+   return findnode(id);
+ }
+ 
+
+}
+
+
+}
+
 
 
 

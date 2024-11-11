@@ -21,6 +21,9 @@ function addShape(type,dragzone,node){
   }
 
   if (node.color == "orange") Color = "#ffa500";
+  
+  if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
+  if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 
    
   if (type=="C") {addCircle(dragzone);} 
 }

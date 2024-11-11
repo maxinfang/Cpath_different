@@ -37,17 +37,24 @@ function redraw(student_string, correct_string) {
   if (mode == "correct" && answer_type == "overlapping") {
     var root = new Node();
     root = findrootnode(answer_Nodes, answer_Links);
- 
-    var { linkedArray, linkedArray2 } = setupLinkedArray(answer_Nodes, answer_Links);
-    //also need to set up the connectioons in the function can you also make it as function
-     
-   //ABOVE IS TO SET UP THE LINKED ARRAY
-    console.log(root);
-    console.log(linkedArray2);
+    root_sub = findrootnode(myNodes, mylinks);
+    var { linkedArray, linkedArray2 } = setupLinkedArray(answer_Nodes, answer_Links); 
+    
+   var returnvalues =setupLinkedArray(myNodes, mylinks)
+   var linkedArray2_sub = returnvalues.linkedArray2;
+   var linkedArray_sub = returnvalues.linkedArray;
+    //ABOVE IS TO SET UP THE LINKED ARRAY 
     var linkedrootnode = findlinkednode(root.id,linkedArray2);
    
+    console.log(linkedArray);
+    console.log(linkedArray2_sub);
+    var linkedrootnode_sub = findlinkednode(root_sub.id,linkedArray2_sub);
+   
     recursive(linkedrootnode);
+    recursive(linkedrootnode_sub);
+
     var deep = linkedrootnode.level;
+    var deep_sub = linkedrootnode_sub.level;
 
      for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
@@ -93,6 +100,7 @@ function redraw(student_string, correct_string) {
         }
       }
     }
+    
     // use depth to get the calculation base
     var project_duration = 0;
     for (var i = 1; i <= deep; i++) {
@@ -179,8 +187,105 @@ function redraw(student_string, correct_string) {
     //add some function here to compare to string
     // update the color of the node
    // Compare correct nodes to student nodes
-   function compareAndUpdateNodes(linkded) {
-     // Compare correct nodes to student nodes
+   function compareAndUpdateNodes() {
+
+    for(var n=0; n<linkedArray.length;n++){
+      var linkednode = linkedArray[n];
+      var node= linkedArray[n].node;  
+         for(var m=0; m<linkedArray_sub.length;m++){ 
+         var student_linkednode=linkedArray_sub[m];
+         var   student_node= linkedArray_sub[m].node; 
+          
+         if(student_node.activity ==  node.activity) 
+           
+            { node.color= "green";  
+              
+               console.log(node);
+                console.log(student_node);
+              // compare the pre and next
+              // pre   
+              if(node.EFT==student_node.EFT ){
+                if(node.EFTcolor == "red"){node.EFTcolor="blue";}
+                else{node.EFTcolor="default";}
+                
+              } 
+              if(node.EST==student_node.EST ){
+                if(node.ESTcolor == "red"){node.ESTcolor="blue";}
+                else{node.ESTcolor="default";}  
+              
+              }  
+              if(node.FF==student_node.FF)  {
+                if(node.FFcolor == "red"){node.FFcolor="blue";}
+                else{node.FFcolor="default";}   
+              }   
+              if(node.LFT==student_node.LFT){
+                
+                if(node.LFTcolor == "red"){node.LFTcolor="blue";}
+                else{node.LFTcolor="default";}   
+              
+              } 
+              if(node.LST==student_node.LST){
+                
+                  if(node.LSTcolor == "red"){node.LSTcolor="blue";}
+                else{node.LSTcolor="default";} 
+              } 
+              if(node.TF==student_node.TF  ){
+                  if(node.TFcolor == "red"){node.TFcolor="blue";}
+                else{node.TFcolor="default";} 
+              
+              } 
+               
+             console.log(linkednode.prevNode);
+             console.log(student_linkednode.prevNode);
+              var correctbox = new Array();
+              var studentbox  = new Array();
+              
+              
+              for(var k=0; k<linkednode.prevNode.length; k++){
+                var temp=  findnode(linkednode.prevNode[k].id); 
+                 correctbox.push(temp.activity);
+                
+              }
+              
+              for(var k=0; k<student_linkednode.prevNode.length; k++){
+                var temp=  findsubnode(student_linkednode.prevNode[k].id); 
+                 studentbox.push(temp.activity);
+                
+              }
+              if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
+              
+              //next 
+              
+               var correctbox_next = new Array();
+               var studentbox_next  = new Array();
+                for(var k=0; k<linkednode.nextNodes.length; k++){
+                var temp=  findnode(linkednode.nextNodes[k].id); 
+                 
+               if(typeof temp != 'undefined' ){
+                  correctbox_next.push(temp.activity);
+               }
+                
+              }
+              
+              for(var k=0; k<student_linkednode.nextNodes.length; k++){
+                var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
+                if(typeof temp!= 'undefined' ){
+                 studentbox_next.push(temp.activity);
+                }
+                
+              }
+              if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   }
+            
+             break;
+             }
+          else {
+           node.color="red";
+         
+            } 
+        }
+       
+     }
+     /*
      for (let i = 0; i < answer_Nodes.length; i++) {
        const correctNode = answer_Nodes[i];
        const studentNode = myNodes.find(node => node.activity === correctNode.activity);
@@ -195,7 +300,7 @@ function redraw(student_string, correct_string) {
        else {
         correctNode.color = "red"; // Incorrect
        }
-     }
+     }*/
    }
 
   
@@ -301,8 +406,8 @@ function setupLinkedArray(nodes, links) {
     var linkedNode = linkedArray[j];
     var children = new Array();
     var parents = new Array();
-    for (var n = 0; n < answer_Links.length; n++) {
-      var link = answer_Links[n];
+    for (var n = 0; n < links.length; n++) {
+      var link = links[n];
       if (link.t == linkedNode.id) {
         parents.push(findlinkednode(link.h,linkedArray2));
       }
@@ -341,7 +446,7 @@ function setupLinkedArray(nodes, links) {
     }
     linkedNode.nextconnectors = suclink;
   }
-
+   
   return {linkedArray, linkedArray2}
 }
 
@@ -351,9 +456,9 @@ function deepCopyArray(array) {
   });
 }
   
-  function findlinkednode(id, linkedArray2) {
-    for (x = 0; x < linkedArray2.length; x++) {
-      var li = linkedArray2[x];
+  function findlinkednode(id, array) {
+    for (x = 0; x < array.length; x++) {
+      var li = array[x];
       if (li.id == id) {
         return li;
       }
@@ -387,9 +492,7 @@ function deepCopyArray(array) {
         if (link.h == linkedNode.id) {
           children.push(findlinkednode(link.t));
         }
-      }
-      // linkedNode.node.parentID;
-      // console.log(children);
+      } 
       linkedNode.prevNode = parents;
       linkedNode.nextNodes = children;
     }
@@ -403,8 +506,7 @@ function deepCopyArray(array) {
       for (var j = 0; j < linkedArray.length; j++) {
         var lnode = linkedArray[j];
         if (lnode.level == n) {
-          var parentnodes = lnode.prevNode;
-
+          var parentnodes = lnode.prevNode; 
           var maxValudeofParentEFT = 0;
           for (var k = 0; k < parentnodes.length; k++) {
             var nodedata = parentnodes[k].node;
@@ -458,8 +560,7 @@ function deepCopyArray(array) {
     }
 
     for (n = 0; n < myNodes.length; n++) {
-      var node = myNodes[n];
-      //console.log(node);
+      var node = myNodes[n]; 
       drawnode(node);
     }
     addConnections(mylinks);
