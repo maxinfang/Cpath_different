@@ -466,6 +466,26 @@ function deepCopyArray(array) {
     return "none";
   }
 
+  function findsubnode(id) {
+    for (x = 0; x < answer_Nodes.length; x++) {
+      var li = myNodes[x];
+      if (li.activity == id) {
+        return li;
+      }
+    }
+    return "none";
+  }
+
+  function findnode(id) {
+    for (x = 0; x < myNodes.length; x++) {
+      var li = answer_Nodes[x];
+      if (li.activity == id) {
+        return li;
+      }
+    }
+    return "none";
+  }
+
   if (mode == "correct" && answer_type == "precedence") {
     var root = new Node();
     root = findrootnode(answer_Nodes,answer_links);
