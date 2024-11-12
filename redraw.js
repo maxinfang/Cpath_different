@@ -199,9 +199,7 @@ function redraw(student_string, correct_string) {
          if(student_node.activity ==  node.activity) 
            
             { node.color= "green";  
-              
-               console.log(node);
-                console.log(student_node);
+               
               // compare the pre and next
               // pre   
               if(node.EFT==student_node.EFT ){
@@ -234,9 +232,7 @@ function redraw(student_string, correct_string) {
                 else{node.TFcolor="default";} 
               
               } 
-               
-             console.log(linkednode.prevNode);
-             console.log(student_linkednode.prevNode);
+                
               var correctbox = new Array();
               var studentbox  = new Array();
               
