@@ -187,7 +187,7 @@ function redraw(student_string, correct_string) {
     //add some function here to compare to string
     // update the color of the node
    // Compare correct nodes to student nodes
-   function compareAndUpdateNodes() {
+   function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
 
     for(var n=0; n<linkedArray.length;n++){
       var linkednode = linkedArray[n];
@@ -283,9 +283,9 @@ function redraw(student_string, correct_string) {
          
             } 
         }
-       
+       console.log(linkednode);
      }
-     /*
+     
      for (let i = 0; i < answer_Nodes.length; i++) {
        const correctNode = answer_Nodes[i];
        const studentNode = myNodes.find(node => node.activity === correctNode.activity);
@@ -300,7 +300,7 @@ function redraw(student_string, correct_string) {
        else {
         correctNode.color = "red"; // Incorrect
        }
-     }*/
+     }
    }
 
   
@@ -353,24 +353,18 @@ function redraw(student_string, correct_string) {
      return linkedArray;
    }
 
-
-   // Execute the functions 
-    
-   var linked_array_answer = calculateLinkedArrayAndValues(); 
-   compareAndUpdateNodes();
-
  
-   // need to get this out make it a simpler logic. 
+   calculateLinkedArrayAndValues(); 
+   compareAndUpdateNodes(linkedArray,linkedArray_sub);
+ 
     for (n = 0; n < answer_Nodes.length; n++) {
       var node = answer_Nodes[n];
       console.log(node);
       drawnode(node);
-    }
-    
+    } 
     addConnections(answer_Links);
   }
-
-
+  
 function setupLinkedArray(nodes, links) {
   var linkedArray = [];
   var linkedArray2 = [];
@@ -468,7 +462,7 @@ function deepCopyArray(array) {
 
   function findsubnode(id) {
     for (x = 0; x < answer_Nodes.length; x++) {
-      var li = myNodes[x];
+      var li = answer_Nodes[x];
       if (li.activity == id) {
         return li;
       }
@@ -478,7 +472,7 @@ function deepCopyArray(array) {
 
   function findnode(id) {
     for (x = 0; x < myNodes.length; x++) {
-      var li = answer_Nodes[x];
+      var li = myNodes[x];
       if (li.activity == id) {
         return li;
       }
@@ -579,11 +573,11 @@ function deepCopyArray(array) {
       }
     }
 
-    for (n = 0; n < myNodes.length; n++) {
-      var node = myNodes[n]; 
+    for (n = 0; n < answer_Nodes.length; n++) {
+      var node = answer_Nodes[n]; 
       drawnode(node);
     }
-    addConnections(mylinks);
+    addConnections();
 
   } else if (mode == "correct" && answer_type == "arrow") {
     for (n = 0; n < myNodes.length; n++) {
