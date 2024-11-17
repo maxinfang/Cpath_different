@@ -496,29 +496,23 @@ function calculateLFT(node,value){
 
 function calculateLST(node){
  node.LST=    +node.LFT - +du[node.activity];
- 
  return node.EFT;
-
 }
 
 function calculateFFTF(node,value){ 
-  
  node.FF=   value  - node.EFT;
  node.TF=    +node.LFT - +node.EFT;
- 
  
 }
 
 
 function calculateTF(node){
   node.TF=  +node.LFT - +node.EFT; 
-  
 }
 
 
 function calculateFF(node,value){
   node.FF=value;
-   
 }
 
 function deleteNode(node)
