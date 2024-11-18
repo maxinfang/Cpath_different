@@ -24,6 +24,8 @@ function addShape(type,dragzone,node){
   
   if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
   if(node.right_red=="red"){ right_end="#d9534f";} else if(node.color != "red"){right_end="#445566";} 
+
+  if(node.left_red=="red"){ left_end="#d9534f";} else if(node.color != "red"){left_end="#445566";} 
    
   if (type=="C") {addCircle(dragzone);} 
 }
@@ -48,6 +50,7 @@ function addCircle(dragzone) {
        
     }, 
      maxConnections: -1,
+     paintStyle:{ fillStyle:right_end},
     connector: ["Straight"], 
      connectorOverlays: [["Arrow",
     { width: 15,
@@ -60,6 +63,7 @@ function addCircle(dragzone) {
  
    var targetPoint= {
     anchor: "Left",
+    paintStyle:{ fillStyle:left_end},
     maxConnections: -1, 
     isSource:false,
     isTarget:true,

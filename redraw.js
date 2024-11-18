@@ -44,10 +44,9 @@ function redraw(student_string, correct_string) {
    var linkedArray2_sub = returnvalues.linkedArray2;
    var linkedArray_sub = returnvalues.linkedArray;
     //ABOVE IS TO SET UP THE LINKED ARRAY 
-    var linkedrootnode = findlinkednode(root.id,linkedArray2);
-   
+    var linkedrootnode = findlinkednode(root.id,linkedArray2); 
     console.log(linkedArray);
-    console.log(linkedArray2_sub);
+    console.log(linkedArray_sub);
     var linkedrootnode_sub = findlinkednode(root_sub.id,linkedArray2_sub);
    
     recursive(linkedrootnode);
@@ -181,7 +180,8 @@ function redraw(student_string, correct_string) {
         }
       }
     }
-
+    console.log(linkedArray);
+    console.log(linkedArray2_sub);
 
 
     //add some function here to compare to string
@@ -194,36 +194,26 @@ function redraw(student_string, correct_string) {
       var node= linkedArray[n].node;  
          for(var m=0; m<linkedArray_sub.length;m++){ 
          var student_linkednode=linkedArray_sub[m];
-         var   student_node= linkedArray_sub[m].node; 
-          
-         if(student_node.activity ==  node.activity) 
-           
-            { node.color= "green";  
-               
-              // compare the pre and next
-              // pre   
+         var   student_node= linkedArray_sub[m].node;  
+         if(student_node.activity ==  node.activity)  
+            { node.color= "green";    
               if(node.EFT==student_node.EFT ){
                 if(node.EFTcolor == "red"){node.EFTcolor="blue";}
-                else{node.EFTcolor="default";}
-                
+                else{node.EFTcolor="default";} 
               } 
               if(node.EST==student_node.EST ){
                 if(node.ESTcolor == "red"){node.ESTcolor="blue";}
-                else{node.ESTcolor="default";}  
-              
+                else{node.ESTcolor="default";} 
               }  
               if(node.FF==student_node.FF)  {
                 if(node.FFcolor == "red"){node.FFcolor="blue";}
                 else{node.FFcolor="default";}   
               }   
-              if(node.LFT==student_node.LFT){
-                
+              if(node.LFT==student_node.LFT){ 
                 if(node.LFTcolor == "red"){node.LFTcolor="blue";}
-                else{node.LFTcolor="default";}   
-              
+                else{node.LFTcolor="default";}    
               } 
-              if(node.LST==student_node.LST){
-                
+              if(node.LST==student_node.LST){ 
                   if(node.LSTcolor == "red"){node.LSTcolor="blue";}
                 else{node.LSTcolor="default";} 
               } 
@@ -271,17 +261,17 @@ function redraw(student_string, correct_string) {
                 
               }
               if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   }
-            
+             
              break;
              }
           else {
-           node.color="red";
-         
+           node.color="red"; 
             } 
         }
-       console.log(linkednode);
-     }
      
+     }
+
+     /*
      for (let i = 0; i < answer_Nodes.length; i++) {
        const correctNode = answer_Nodes[i];
        const studentNode = myNodes.find(node => node.activity === correctNode.activity);
@@ -296,12 +286,12 @@ function redraw(student_string, correct_string) {
        else {
         correctNode.color = "red"; // Incorrect
        }
-     }
+     }*/
    }
 
   
 
-   function calculateLinkedArrayAndValues() {
+   function calculateLinkedArrayAndValues(myNodes, mylinks) {
      var root = findrootnode(myNodes, mylinks);
      linkedArray = [];
      linkedArray2 = [];
@@ -334,6 +324,9 @@ function redraw(student_string, correct_string) {
        linkedNode.nextNodes = children;
      }
 
+     console.log(linkedArray);
+     console.log(linkedArray2_sub);
+
      // Calculate values
      var linkedrootnode = findlinkednode(root.activity,linkedArray2);
      recursive(linkedrootnode);
@@ -350,11 +343,12 @@ function redraw(student_string, correct_string) {
    }
 
  
-   calculateLinkedArrayAndValues(); 
+   calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
- 
-    for (n = 0; n < answer_Nodes.length; n++) {
-      var node = answer_Nodes[n];
+  console.log(linkedArray);
+  console.log(linkedArray_sub);
+    for (n = 0; n < linkedArray.length; n++) {
+      var node = linkedArray[n].node;
       console.log(node);
       drawnode(node);
     } 
