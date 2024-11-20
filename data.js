@@ -54,13 +54,17 @@ function addtext(lable,value){
   text.style.width='30px';
 
   text.name=lable; 
+  if (typeof value=== 'undefined') {text.style.borderColor="red"; }
+  // if(value=""){text.style.borderColor="red";};
+  else{ text.style.borderColor = "blue";}
+  text.name=lable; 
   if(typeof(value) != "undefined")
   {
     
     text.value=value;
   }
-  
-  return text;
+
+   return text;
 };
 
 

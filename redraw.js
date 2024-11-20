@@ -203,23 +203,23 @@ function redraw(student_string, correct_string) {
               } 
               if(node.EST==student_node.EST ){
                 if(node.ESTcolor == "red"){node.ESTcolor="blue";}
-                else{node.ESTcolor="default";} 
+                else{node.ESTcolor="blue";} 
               }  
               if(node.FF==student_node.FF)  {
                 if(node.FFcolor == "red"){node.FFcolor="blue";}
-                else{node.FFcolor="default";}   
+                else{node.FFcolor="blue";}   
               }   
               if(node.LFT==student_node.LFT){ 
                 if(node.LFTcolor == "red"){node.LFTcolor="blue";}
-                else{node.LFTcolor="default";}    
+                else{node.LFTcolor="blue";}    
               } 
               if(node.LST==student_node.LST){ 
                   if(node.LSTcolor == "red"){node.LSTcolor="blue";}
-                else{node.LSTcolor="default";} 
+                else{node.LSTcolor="blue";} 
               } 
               if(node.TF==student_node.TF  ){
                   if(node.TFcolor == "red"){node.TFcolor="blue";}
-                else{node.TFcolor="default";} 
+                else{node.TFcolor="blue";} 
               
               } 
                 
@@ -228,13 +228,13 @@ function redraw(student_string, correct_string) {
               
               
               for(var k=0; k<linkednode.prevNode.length; k++){
-                var temp=  findnode(linkednode.prevNode[k].id); 
+                var temp=  findsubnode(linkednode.prevNode[k].id); 
                  correctbox.push(temp.activity);
                 
               }
               
               for(var k=0; k<student_linkednode.prevNode.length; k++){
-                var temp=  findsubnode(student_linkednode.prevNode[k].id); 
+                var temp=  findnode(student_linkednode.prevNode[k].id); 
                  studentbox.push(temp.activity);
                 
               }
