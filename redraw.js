@@ -54,6 +54,7 @@ function redraw(student_string, correct_string) {
 
     var deep = linkedrootnode.level;
     var deep_sub = linkedrootnode_sub.level;
+    console.log(deep_sub);
 
      for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
@@ -180,8 +181,10 @@ function redraw(student_string, correct_string) {
         }
       }
     }
+
+
     console.log(linkedArray);
-    console.log(linkedArray2_sub);
+    console.log(linkedArray_sub);
 
 
     //add some function here to compare to string
@@ -192,9 +195,11 @@ function redraw(student_string, correct_string) {
     for(var n=0; n<linkedArray.length;n++){
       var linkednode = linkedArray[n];
       var node= linkedArray[n].node;  
-         for(var m=0; m<linkedArray_sub.length;m++){ 
+          for(var m=0; m<linkedArray_sub.length;m++){ 
          var student_linkednode=linkedArray_sub[m];
-         var   student_node= linkedArray_sub[m].node;  
+         console.log(student_linkednode);
+         var   student_node= student_linkednode.node;  
+         console.log(student_node);
          if(student_node.activity ==  node.activity)  
             { node.color= "green";    
               if(node.EFT==student_node.EFT ){
@@ -225,19 +230,12 @@ function redraw(student_string, correct_string) {
                 
               var correctbox = new Array();
               var studentbox  = new Array();
+              //TODO FIX THIS
+              console.log(linkednode);
+              console.log(student_linkednode.prevNode);
+              correctbox = linkednode.prevNode.map(function(a) {return a.activity;});
+              studentbox = student_linkednode.prevNode.map(function(a) {return a.activity;});
               
-              
-              for(var k=0; k<linkednode.prevNode.length; k++){
-                var temp=  findsubnode(linkednode.prevNode[k].id); 
-                 correctbox.push(temp.activity);
-                
-              }
-              
-              for(var k=0; k<student_linkednode.prevNode.length; k++){
-                var temp=  findnode(student_linkednode.prevNode[k].id); 
-                 studentbox.push(temp.activity);
-                
-              }
               if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
               
               //next 
