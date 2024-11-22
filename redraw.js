@@ -51,10 +51,11 @@ function redraw(student_string, correct_string) {
    
     recursive(linkedrootnode);
     recursive(linkedrootnode_sub);
+  
 
     var deep = linkedrootnode.level;
     var deep_sub = linkedrootnode_sub.level;
-    console.log(deep_sub);
+ 
 
      for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
@@ -182,166 +183,17 @@ function redraw(student_string, correct_string) {
       }
     }
 
-
-    console.log(linkedArray);
-    console.log(linkedArray_sub);
-
+ 
 
     //add some function here to compare to string
     // update the color of the node
    // Compare correct nodes to student nodes
-   function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
-
-    for(var n=0; n<linkedArray.length;n++){
-      var linkednode = linkedArray[n];
-      var node= linkedArray[n].node;  
-          for(var m=0; m<linkedArray_sub.length;m++){ 
-         var student_linkednode=linkedArray_sub[m];
-         console.log(student_linkednode);
-         var   student_node= student_linkednode.node;  
-         console.log(student_node);
-         if(student_node.activity ==  node.activity)  
-            { node.color= "green";    
-              if(node.EFT==student_node.EFT ){
-                if(node.EFTcolor == "red"){node.EFTcolor="blue";}
-                else{node.EFTcolor="default";} 
-              } 
-              if(node.EST==student_node.EST ){
-                if(node.ESTcolor == "red"){node.ESTcolor="blue";}
-                else{node.ESTcolor="blue";} 
-              }  
-              if(node.FF==student_node.FF)  {
-                if(node.FFcolor == "red"){node.FFcolor="blue";}
-                else{node.FFcolor="blue";}   
-              }   
-              if(node.LFT==student_node.LFT){ 
-                if(node.LFTcolor == "red"){node.LFTcolor="blue";}
-                else{node.LFTcolor="blue";}    
-              } 
-              if(node.LST==student_node.LST){ 
-                  if(node.LSTcolor == "red"){node.LSTcolor="blue";}
-                else{node.LSTcolor="blue";} 
-              } 
-              if(node.TF==student_node.TF  ){
-                  if(node.TFcolor == "red"){node.TFcolor="blue";}
-                else{node.TFcolor="blue";} 
-              
-              } 
-                
-              var correctbox = new Array();
-              var studentbox  = new Array();
-              //TODO FIX THIS
-              console.log(linkednode);
-              console.log(student_linkednode.prevNode);
-              correctbox = linkednode.prevNode.map(function(a) {return a.activity;});
-              studentbox = student_linkednode.prevNode.map(function(a) {return a.activity;});
-              
-              if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
-              
-              //next 
-              
-               var correctbox_next = new Array();
-               var studentbox_next  = new Array();
-                for(var k=0; k<linkednode.nextNodes.length; k++){
-                var temp=  findnode(linkednode.nextNodes[k].id); 
-                 
-               if(typeof temp != 'undefined' ){
-                  correctbox_next.push(temp.activity);
-               }
-                
-              }
-              
-              for(var k=0; k<student_linkednode.nextNodes.length; k++){
-                var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
-                if(typeof temp!= 'undefined' ){
-                 studentbox_next.push(temp.activity);
-                }
-                
-              }
-              if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   }
-             
-             break;
-             }
-          else {
-           node.color="red"; 
-            } 
-        }
-     
-     }
-
-     /*
-     for (let i = 0; i < answer_Nodes.length; i++) {
-       const correctNode = answer_Nodes[i];
-       const studentNode = myNodes.find(node => node.activity === correctNode.activity);
-      console.log(studentNode);
-      console.log(correctNode);
-       if (studentNode) { 
-        correctNode.color = "green"; // Correct 
-        if (correctNode.EFT !== studentNode.EFT || correctNode.LFT !== studentNode.LFT || correctNode.EST !== studentNode.EST || correctNode.LST !== studentNode.LST || correctNode.TF !== studentNode.TF || correctNode.FF !== studentNode.FF ) {
-          correctNode.color = "orange"; // Partially correct
-        }
-      }
-       else {
-        correctNode.color = "red"; // Incorrect
-       }
-     }*/
-   }
-
-  
-
-   function calculateLinkedArrayAndValues(myNodes, mylinks) {
-     var root = findrootnode(myNodes, mylinks);
-     linkedArray = [];
-     linkedArray2 = [];
-
-     // Create linked nodes
-     for (let n = 0; n < myNodes.length; n++) {
-       var node = myNodes[n];
-       var linkedNode = new NodeClass(node);
-       linkedArray.push(linkedNode);
-       linkedArray2.push(linkedNode);
-     }
-
-     // Set up connections
-     for (let j = 0; j < linkedArray.length; j++) {
-       var linkedNode = linkedArray[j];
-       var children = [];
-       var parents = [];
-
-       for (let n = 0; n < mylinks.length; n++) {
-         var link = mylinks[n];
-         if (link.t === linkedNode.activity) {
-           parents.push(findlinkednode(link.h,linkedArray2));
-         }
-         if (link.h === linkedNode.activity) {
-           children.push(findlinkednode(link.t,linkedArray2));
-         }
-       }
-
-       linkedNode.prevNode = parents;
-       linkedNode.nextNodes = children;
-     }
-
-     console.log(linkedArray);
-     console.log(linkedArray2_sub);
-
-     // Calculate values
-     var linkedrootnode = findlinkednode(root.activity,linkedArray2);
-     recursive(linkedrootnode);
-
-     // Perform calculations (assuming these functions exist)
-     calculateEFT(linkedrootnode);
-     calculateLFT(linkedrootnode);
-     calculateEST(linkedrootnode);
-     calculateLST(linkedrootnode);
-     calculateTF(linkedrootnode);
-     calculateFF(linkedrootnode);
-
-     return linkedArray;
-   }
+ 
 
  
    calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
+   console.log(linkedArray);
+
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
   console.log(linkedArray);
   console.log(linkedArray_sub);
@@ -432,11 +284,7 @@ function setupLinkedArray(nodes, links) {
   return {linkedArray, linkedArray2}
 }
 
-function deepCopyArray(array) {
-  return array.map(item => {
-    return JSON.parse(JSON.stringify(item));
-  });
-}
+ 
   
   function findlinkednode(id, array) {
     for (x = 0; x < array.length; x++) {
@@ -448,26 +296,7 @@ function deepCopyArray(array) {
     return "none";
   }
 
-  function findsubnode(id) {
-    for (x = 0; x < answer_Nodes.length; x++) {
-      var li = answer_Nodes[x];
-      if (li.activity == id) {
-        return li;
-      }
-    }
-    return "none";
-  }
-
-  function findnode(id) {
-    for (x = 0; x < myNodes.length; x++) {
-      var li = myNodes[x];
-      if (li.activity == id) {
-        return li;
-      }
-    }
-    return "none";
-  }
-
+   
   if (mode == "correct" && answer_type == "precedence") {
     var root = new Node();
     root = findrootnode(answer_Nodes,answer_links);
