@@ -735,10 +735,11 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
             var studentbox  = new Array();
             //TODO FIX THIS
             console.log(linkednode);
-            console.log(student_linkednode.prevNode);
+            console.log(student_linkednode);
             correctbox = linkednode.prevNode.map(function(a) {return a.activity;});
             studentbox = student_linkednode.prevNode.map(function(a) {return a.activity;});
-            
+            console.log(correctbox);
+            console.log(studentbox);
             if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
             
             //next 
@@ -750,10 +751,8 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
                
              if(typeof temp != 'undefined' ){
                 correctbox_next.push(temp.activity);
-             }
-              
-            }
-            
+             } 
+            }  
             for(var k=0; k<student_linkednode.nextNodes.length; k++){
               var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
               if(typeof temp!= 'undefined' ){
