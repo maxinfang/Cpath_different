@@ -59,8 +59,7 @@ function redraw(student_string, correct_string) {
 
      for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
-        var lnode = linkedArray[j]; 
-        console.log (n);
+        var lnode = linkedArray[j];  
         if (lnode.level == n) {
           var precon = lnode.prevconnectors;
           var _array = new Array();
@@ -192,8 +191,6 @@ function redraw(student_string, correct_string) {
 
  
    calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
-   console.log(linkedArray);
-
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
   console.log(linkedArray);
   console.log(linkedArray_sub);

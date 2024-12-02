@@ -699,10 +699,8 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
     var node= linkedArray[n].node;  
     console.log (linkednode);
         for(var m=0; m<linkedArray_sub.length;m++){ 
-       var student_linkednode=linkedArray_sub[m];
-       console.log(student_linkednode);
-       var   student_node= student_linkednode.node;  
-       console.log(student_node);
+       var student_linkednode=linkedArray_sub[m]; 
+       var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
           { node.color= "green";    
             if(node.EFT==student_node.EFT ){
@@ -731,37 +729,44 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
             
             } 
               
-            var correctbox = new Array();
-            var studentbox  = new Array();
-            //TODO FIX THIS
-            console.log(linkednode);
-            console.log(student_linkednode);
-            correctbox = linkednode.prevNode.map(function(a) {return a.activity;});
-            studentbox = student_linkednode.prevNode.map(function(a) {return a.activity;});
+    
+
+            // Initialize correctbox as an empty array
+            let correctbox = []; 
+            var studentbox = [];
+             // Add all the previous node activities to correctbox
+
+            student_linkednode.prevNode.forEach(function(a) {
+              console.log(a);
+              studentbox.push(a.node.activity);
+            });
+
+            linkednode.prevNode.forEach(function(a) { //correct
+             console.log(a);
+             correctbox.push(a.node.activity);
+            }); 
+              
             console.log(correctbox);
             console.log(studentbox);
             if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
             
-            //next 
+       
             
-             var correctbox_next = new Array();
-             var studentbox_next  = new Array();
-              for(var k=0; k<linkednode.nextNodes.length; k++){
-              var temp=  findnode(linkednode.nextNodes[k].id); 
-               
-             if(typeof temp != 'undefined' ){
-                correctbox_next.push(temp.activity);
-             } 
-            }  
-            for(var k=0; k<student_linkednode.nextNodes.length; k++){
-              var temp=  findsubnode(student_linkednode.nextNodes[k].id); 
-              if(typeof temp!= 'undefined' ){
-               studentbox_next.push(temp.activity);
-              }
+          let correctbox_next = [];
+          let studentbox_next  = []
+
+          linkednode.nextNodes.forEach(function(a) {
+              if (a.node.activity) {
+                correctbox_next.push(a.node.activity)
+              } 
+            } )
+            student_linkednode.nextNodes.forEach(function(a) {
+              if (a.node.activity) {
+                studentbox_next.push(a.node.activity)
+              } 
+            })
               
-            }
-            if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   }
-           
+          if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   } 
            break;
            }
         else {
