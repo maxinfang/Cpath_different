@@ -357,14 +357,14 @@ function updatelink(link,property,con){
    if(property=="activity"){ll.activity=link.activity;
     if (ll.activity==0){
       con.setPaintStyle({lineWidth: 2, 
-       strokeStyle:"#666",
-       dashstyle:"4 2"})
+       strokeStyle:"red" ,
+       dashstyle: "4 2"})
     } 
     else{
      con.setPaintStyle({
        dashstyle: "solid",
        lineWidth: 2 ,
-       strokeStyle:"#666"
+       strokeStyle:"red"
      })
    } 
  } 
@@ -697,6 +697,7 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
   for(var n=0; n<linkedArray.length;n++){
     var linkednode = linkedArray[n];
     var node= linkedArray[n].node;  
+    var nextconnectors =linkednode.nextconnectors;
     console.log (linkednode);
         for(var m=0; m<linkedArray_sub.length;m++){ 
        var student_linkednode=linkedArray_sub[m]; 
@@ -748,7 +749,9 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
               
             console.log(correctbox);
             console.log(studentbox);
-            if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red";}
+            if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red"; 
+              
+            }
             
        
             
@@ -766,7 +769,8 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
               } 
             })
               
-          if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   } 
+          if(! correctbox_next.sort().compare(studentbox_next.sort())) {   node.right_red="red";   
+           } 
            break;
            }
         else {

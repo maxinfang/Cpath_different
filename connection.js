@@ -3,7 +3,7 @@ function addConnections(linklist){
   var arraynodes=linklist.slice(); 
   for(n=0; n<arraynodes.length;n++){
     var link= arraynodes[n]; 
-    addConnection(link);  
+     addConnection(link);  
   }
   
 }
@@ -32,7 +32,11 @@ function addConnection(link){
   
   var linkconn= jsPlumb.connect({
    source:s,
-   target:t 
+   target:t,
+   paintStyle: { stroke: "red", strokeWidth: 2 } // Set the stroke color to red
+
+   
+
  }); 
   
   linkconn.addOverlay( ["Custom", {
@@ -48,13 +52,11 @@ function addConnection(link){
   $(".datatable").jLzindex();
  
   
-  if(link.activity==0 &&(link.LT==""||link.LT=="0")   ){
-    
+  if(link.activity==0 &&(link.LT==""||link.LT=="0")   ){ 
     linkconn.setPaintStyle({lineWidth: 2, 
-      strokeStyle:"#666",
+      strokeStyle:"red", 
       dashstyle:"4 2"
-    })
-   
+    }) 
       var box= linkconn.getOverlays();
     //  if(box.isVisiable==true){box.setVisiable(false)} 
      //  box[1].setVisible(true); 

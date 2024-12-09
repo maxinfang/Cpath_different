@@ -181,7 +181,7 @@ $(document).ready(function()  {
        
        console.log(conn);       
        conn.setPaintStyle({lineWidth: 2, 
-         strokeStyle:"#666",
+         strokeStyle:"red",
          dashstyle:"4 2"})   
        if (conn.getOverlays().length<=1){
         jsPlumb.select(conn).addOverlay( ["Custom", {
