@@ -76,7 +76,7 @@ function drawnode(node) {
   //$(element).append(addlabel("EST"));
 
 
-  var EST = node.EST == ""|| 0 ? addtext("EST", "0" ) : addtext("EST", node.EST);
+  var EST = node.EST == ""|| 0 ? addtext("EST", "0" ) : addtext("EST", node.EST, node.ESTcolor );
 
   var ESTdata = document.createElement("div");
   ESTdata.style.display = "block";
@@ -84,7 +84,7 @@ function drawnode(node) {
   $(ESTdata).append(addlabel("EST"));
   $(ESTdata).append(EST);
 
-  var EFT = node.EFT == "" || 0 ? addtext("EFT", "0") : addtext("EFT", node.EFT);
+  var EFT = node.EFT == "" || 0 ? addtext("EFT", "0") : addtext("EFT", node.EFT, node.EFTcolor);
 
   $(ESTdata).append(addlabel("EFT"));
   $(ESTdata).append(EFT);
@@ -94,11 +94,11 @@ function drawnode(node) {
 
   $(LSTdata).append(addlabel("LST"));
 
-  var LST = node.LST == "" || 0 ? addtext("LST","0") : addtext("LST", node.LST);
+  var LST = node.LST == "" || 0 ? addtext("LST","0") : addtext("LST", node.LST, node.LSTcolor);
 
   $(LSTdata).append(LST);
 
-  var LFT = node.LFT == "" || 0 ? addtext("LFT", "0") : addtext("LFT", node.LFT);
+  var LFT = node.LFT == "" || 0 ? addtext("LFT", "0") : addtext("LFT", node.LFT, node.LFTcolor);
 
   $(LSTdata).append(addlabel("LFT"));
   $(LSTdata).append(LFT);
@@ -109,13 +109,13 @@ function drawnode(node) {
   ESTdata.style.display = "block";
 
   $(FFdata).append(addlabel("FF" + "&nbsp&nbsp"));
-  var FF = node.FF == "" || 0 ? addtext("FF", "0") : addtext("FF", node.FF);
+  var FF = node.FF == "" || 0 ? addtext("FF", "0") : addtext("FF", node.FF, node.FFcolor);
 
   $(FFdata).append(FF);
 
   $(FFdata).append(addlabel("TF" + "&nbsp&nbsp"));
 
-  var TF = node.TF == "" || 0 ? addtext("TF","0") : addtext("TF", node.TF);
+  var TF = node.TF == "" || 0 ? addtext("TF","0") : addtext("TF", node.TF, node.TFcolor);
 
   $(FFdata).append(TF);
   $(element).append(FFdata);

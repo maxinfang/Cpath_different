@@ -47,7 +47,7 @@ function addlabel(lable){
   return newlabel;
 };
 
-function addtext(lable,value){ 
+function addtext(lable,value,bordercolor=null){ 
   var text= document.createElement('input');
   $(text).uniqueId();  
   text.type="text";
@@ -55,9 +55,11 @@ function addtext(lable,value){
 
   text.name=lable; 
   if (typeof value=== 'undefined') {text.style.borderColor="red"; }
-  // if(value=""){text.style.borderColor="red";};
-  else{ text.style.borderColor = "blue";}
-  text.name=lable; 
+
+  if (bordercolor != "default") {text.style.borderColor=bordercolor;}
+   //if(value="")
+  //else{ text.style.borderColor = "orange";}
+  //text.name=lable; 
   if(typeof(value) != "undefined")
   {
     

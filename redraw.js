@@ -100,6 +100,53 @@ function redraw(student_string, correct_string) {
         }
       }
     }
+
+    for (var n = deep_sub; n > 0; n--) {
+      for (var j = 0; j < linkedArray_sub.length; j++) {
+        var lnode = linkedArray_sub[j];  
+        if (lnode.level == n) {
+          var precon = lnode.prevconnectors;
+          var _array = new Array();
+          _array.push(0);
+          console.log(precon.length);
+          for (var k = 0; k < precon.length; k++) {  
+            if (precon[k] == null) continue;
+            var con = precon[k];
+            console.log(con);
+            if (con.activity == 0) {
+              var parentlinkednode = findlinkednode(con.h,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              _array.push(+parentnode.EFT + +con.LT);
+            }
+            if (con.activity == 1) {
+              var parentlinkednode = findlinkednode(con.h,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              _array.push(+parentnode.EST + +con.LT);
+            }
+            if (con.activity == 2) {
+              var parentlinkednode = findlinkednode(con.h,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              var duration = du[lnode.node.activity];
+              var temp = +parentnode.EFT + +con.LT - +duration;
+              _array.push(temp);
+            }
+            if (con.activity == 3) {
+              var parentlinkednode = findlinkednode(con.h,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              var duration = du[lnode.node.activity];
+              var temp = +parentnode.EST + +con.LT - +duration;
+              _array.push(temp);
+            }
+          }
+          var maxValudeofParentEFT = Math.max.apply(Math, _array);
+          calculateEST(lnode.node, maxValudeofParentEFT);
+          calculateEFT(lnode.node);
+        }
+      }
+    }
+
+ 
+
     
     // use depth to get the calculation base
     var project_duration = 0;
@@ -192,8 +239,7 @@ function redraw(student_string, correct_string) {
  
    calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
-  console.log(linkedArray);
-  console.log(linkedArray_sub);
+  
     for (n = 0; n < linkedArray.length; n++) {
       var node = linkedArray[n].node;
       console.log(node);

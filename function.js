@@ -698,35 +698,35 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
     var linkednode = linkedArray[n];
     var node= linkedArray[n].node;  
     var nextconnectors =linkednode.nextconnectors;
-    console.log (linkednode);
-        for(var m=0; m<linkedArray_sub.length;m++){ 
+         for(var m=0; m<linkedArray_sub.length;m++){ 
        var student_linkednode=linkedArray_sub[m]; 
        var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
           { node.color= "green";    
+
             if(node.EFT==student_node.EFT ){
               if(node.EFTcolor == "red"){node.EFTcolor="blue";}
-              else{node.EFTcolor="default";} 
+              else{node.EFTcolor="orange";} 
             } 
             if(node.EST==student_node.EST ){
               if(node.ESTcolor == "red"){node.ESTcolor="blue";}
-              else{node.ESTcolor="blue";} 
+              else{node.ESTcolor="organge";} 
             }  
             if(node.FF==student_node.FF)  {
               if(node.FFcolor == "red"){node.FFcolor="blue";}
-              else{node.FFcolor="blue";}   
+              else{node.FFcolor="orange";}   
             }   
             if(node.LFT==student_node.LFT){ 
               if(node.LFTcolor == "red"){node.LFTcolor="blue";}
-              else{node.LFTcolor="blue";}    
+              else{node.LFTcolor="orange";}    
             } 
             if(node.LST==student_node.LST){ 
                 if(node.LSTcolor == "red"){node.LSTcolor="blue";}
-              else{node.LSTcolor="blue";} 
+              else{node.LSTcolor="orange";} 
             } 
             if(node.TF==student_node.TF  ){
                 if(node.TFcolor == "red"){node.TFcolor="blue";}
-              else{node.TFcolor="blue";} 
+              else{node.TFcolor="orange";} 
             
             } 
               
