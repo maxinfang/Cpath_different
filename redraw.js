@@ -1,11 +1,14 @@
 function redraw(student_string, correct_string) {
  
-
+  
   myNodes = deserialiseC(student_string);
   mylinks = deserialiseL(student_string);
+
  
   answer_Nodes = deserialiseC(correct_string);
   answer_Links = deserialiseL(correct_string);
+
+ 
 
   if (myNodes == []) return;
   if (mode == "submission") {
@@ -35,9 +38,11 @@ function redraw(student_string, correct_string) {
   }
 
   if (mode == "correct" && answer_type == "overlapping") {
+    
     var root = new Node();
     root = findrootnode(answer_Nodes, answer_Links);
     root_sub = findrootnode(myNodes, mylinks);
+
     var { linkedArray, linkedArray2 } = setupLinkedArray(answer_Nodes, answer_Links); 
     
    var returnvalues =setupLinkedArray(myNodes, mylinks)
@@ -47,6 +52,7 @@ function redraw(student_string, correct_string) {
     var linkedrootnode = findlinkednode(root.id,linkedArray2); 
     console.log(linkedArray);
     console.log(linkedArray_sub);
+    
     var linkedrootnode_sub = findlinkednode(root_sub.id,linkedArray2_sub);
    
     recursive(linkedrootnode);
@@ -55,7 +61,8 @@ function redraw(student_string, correct_string) {
 
     var deep = linkedrootnode.level;
     var deep_sub = linkedrootnode_sub.level;
- 
+
+  
 
      for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
@@ -100,7 +107,7 @@ function redraw(student_string, correct_string) {
         }
       }
     }
-
+  /*
     for (var n = deep_sub; n > 0; n--) {
       for (var j = 0; j < linkedArray_sub.length; j++) {
         var lnode = linkedArray_sub[j];  
@@ -111,8 +118,7 @@ function redraw(student_string, correct_string) {
           console.log(precon.length);
           for (var k = 0; k < precon.length; k++) {  
             if (precon[k] == null) continue;
-            var con = precon[k];
-            console.log(con);
+            var con = precon[k]; 
             if (con.activity == 0) {
               var parentlinkednode = findlinkednode(con.h,linkedArray2_sub);
               var parentnode = parentlinkednode.node;
@@ -144,9 +150,13 @@ function redraw(student_string, correct_string) {
         }
       }
     }
+    */
 
+   
  
 
+ 
+ 
     
     // use depth to get the calculation base
     var project_duration = 0;
@@ -233,6 +243,47 @@ function redraw(student_string, correct_string) {
   console.log(linkedArray);
   console.log(linkedArray_sub);
 
+
+  /*for (n = 0; n < linkedArray_sub.length; n++) {
+    var node = linkedArray_sub[n].node;
+     for (m = 0; m < myNodes.length; m++) {
+      var node2 = myNodes[m];
+       if (node.id == node2.id) {
+         if (node.EFT == node2.EFT) {
+          node.EFT_color= "green";
+         }else{
+          node.EFT_color= "red";
+         }
+         if (node.EST == node2.EST) {
+          node.EST_color= "green";
+         } else{
+          node.EST_color= "red";
+         }
+          if (node.LFT == node2.LFT) {
+            node.LFT_color= "green";
+          } else{
+            node.LFT_color= "red";
+          }
+          if (node.LST == node2.LST) {
+            node.LST_color= "green";
+          } else{
+            node.LST_color= "red";
+          }
+          if (node.FF == node2.FF) {
+            node.FF_color= "green";
+          } else{
+            node.FF_color= "red";
+          }
+          if (node.TF == node2.TF) {
+            node.TF_color= "green";
+          } else{
+            node.TF_color= "red";
+          }
+      } 
+    }
+  }
+  console.log(linkedArray_sub) ;
+ */
  
    calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
@@ -261,7 +312,7 @@ function redraw(student_string, correct_string) {
      if(rightnodedata.left_red =="red" && leftnodedata.right_red =="red"){ 
       link.boder_color = "red";
      }
-    console.log(link); 
+   //console.log(link); 
    
   } 
 

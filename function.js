@@ -693,6 +693,8 @@ function setupLinkedArray(nodes, links) {
 
 
 function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
+  console.log(linkedArray);
+  console.log(linkedArray_sub);
 
   for(var n=0; n<linkedArray.length;n++){
     var linkednode = linkedArray[n];
@@ -703,22 +705,36 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
        var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
           { node.color= "green";     
-            if(node.EFT==student_node.EFT ){
-              
+            if(node.EFT !=student_node.EFT ){  
+              node.color = "orange";
+              node.EFTcolor="red";
             } 
-            if(node.EST==student_node.EST ){
-              
+            if(node.EST != student_node.EST ){
+              node.color = "orange";
+              node.ESTcolor="red"; 
             }  
-            if(node.FF==student_node.FF)  {
+            if(node.FF  != student_node.FF)  {
+              node.color = "orange";
+              node.FFcolor="red";
+
               
             }   
-            if(node.LFT==student_node.LFT){ 
+            if(node.LFT !=student_node.LFT){ 
+              node.color = "orange";
+              node.LFTcolor="red";
+
                   
             } 
-            if(node.LST==student_node.LST){ 
+            if(node.LST !=student_node.LST){ 
+              node.color = "orange";
+              node.LSTcolor="red";
+
                
             } 
-            if(node.TF==student_node.TF  ){ 
+            if(node.TF != student_node.TF  ){ 
+              node.color = "orange";
+              node.TFcolor="red";
+
             } 
               
     
@@ -765,9 +781,7 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
            break;
            }
         else {
-         node.color="red"; 
-          //node.left_red= "red";
-          //node.right_red = "red";
+         node.color="red";  
           } 
       }
    
