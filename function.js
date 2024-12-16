@@ -199,7 +199,7 @@ function deserialiseC(string){
     } 
     answervalue+=CL_SEPARATOR='a';
     
-    console.log(mylinks);
+     
     
     for(l=0;l<mylinks.length;l++){
       var thislink=mylinks[l]; 
@@ -284,10 +284,8 @@ function findrootnode(myNodes,mylinks){
 function findlink(h,t){
   
   for(var n=0; n<mylinks.length;n++){ 
-   var link= mylinks[n]; 
-   
-   if (link.h == h && link.t== t)
-     
+   var link= mylinks[n];  
+   if (link.h == h && link.t== t) 
    {    
      return link; 
    };
@@ -296,6 +294,26 @@ function findlink(h,t){
  }
  return  null ;
 }
+
+function findlink_correct(h,t){
+  
+  for(var n=0; n<answer_Links.length;n++){ 
+   var link= answer_Links[n];  
+   if (link.h == h && link.t== t) 
+   {    
+     return link; 
+   };
+   
+   
+ }
+ return  null ;
+}
+
+
+
+
+
+
 
 function deletelink(h,t){
 
@@ -674,7 +692,7 @@ function setupLinkedArray(nodes, links) {
     var prevlink = Array();
     for (p = 0; p < predessors.length; p++) {
       var head = predessors[p].id;
-      var link = findlink(head, linkedNode.id);
+      var link = findlink_correct(head, linkedNode.id);
       prevlink.push(link);
     }
     linkedNode.prevconnectors = prevlink;
@@ -682,7 +700,7 @@ function setupLinkedArray(nodes, links) {
     var suclink = Array();
     for (s = 0; s < successors.length; s++) {
       var tail = successors[s].id;
-      var link = findlink(linkedNode.id, tail);
+      var link = findlink_correct(linkedNode.id, tail);
       suclink.push(link);
     }
     linkedNode.nextconnectors = suclink;

@@ -51,8 +51,7 @@ function redraw(student_string, correct_string) {
     //ABOVE IS TO SET UP THE LINKED ARRAY 
     var linkedrootnode = findlinkednode(root.id,linkedArray2); 
     console.log(linkedArray);
-    console.log(linkedArray_sub);
-    
+    console.log(linkedArray_sub); 
     var linkedrootnode_sub = findlinkednode(root_sub.id,linkedArray2_sub);
    
     recursive(linkedrootnode);
@@ -71,12 +70,10 @@ function redraw(student_string, correct_string) {
           var precon = lnode.prevconnectors;
           var _array = new Array();
           _array.push(0);
-          console.log(precon.length);
-          for (var k = 0; k < precon.length; k++) {  
+           for (var k = 0; k < precon.length; k++) {  
             if (precon[k] == null) continue;
             var con = precon[k];
-            console.log(con);
-            if (con.activity == 0) {
+             if (con.activity == 0) {
               var parentlinkednode = findlinkednode(con.h,linkedArray2);
               var parentnode = parentlinkednode.node;
               _array.push(+parentnode.EFT + +con.LT);
@@ -152,11 +149,6 @@ function redraw(student_string, correct_string) {
     }
     */
 
-   
- 
-
- 
- 
     
     // use depth to get the calculation base
     var project_duration = 0;
@@ -388,7 +380,7 @@ function setupLinkedArray(nodes, links) {
     var prevlink = Array();
     for (p = 0; p < predessors.length; p++) {
       var head = predessors[p].id;
-      var link = findlink(head, linkedNode.id);
+      var link = findlink_correct(head, linkedNode.id);
       prevlink.push(link);
     }
     linkedNode.prevconnectors = prevlink;
@@ -396,7 +388,7 @@ function setupLinkedArray(nodes, links) {
     var suclink = Array();
     for (s = 0; s < successors.length; s++) {
       var tail = successors[s].id;
-      var link = findlink(linkedNode.id, tail);
+      var link = findlink_correct(linkedNode.id, tail);
       suclink.push(link);
     }
     linkedNode.nextconnectors = suclink;
