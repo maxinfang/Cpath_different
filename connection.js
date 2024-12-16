@@ -39,13 +39,18 @@ function addConnection(link){
 
  }); 
   
+tableclass = "datatable"
+if(link.boder_color == "red") {
+tableclass ="datatable border-red"; 
+}
+
   linkconn.addOverlay( ["Custom", {
     create:function(component) {  
       var boxvalue=drawarrowbox("arrow",link,linkconn);  
       return $(boxvalue);  
     },
     location:0.5,
-                cssClass:"datatable"//,
+                cssClass: tableclass//,
                // id: cc.id
              }]); 
   

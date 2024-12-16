@@ -230,22 +230,49 @@ function redraw(student_string, correct_string) {
     }
 
  
-
-    //add some function here to compare to string
-    // update the color of the node
-   // Compare correct nodes to student nodes
- 
+  console.log(linkedArray);
+  console.log(linkedArray_sub);
 
  
    calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
-  
+   // need to updateanswerlinks; 
+   console.log(linkedArray);
+   
+   for (n = 0; n < linkedArray.length; n++) {
+    var node = linkedArray[n].node;
+    if (node.color == "red")   {
+        node.left_red = "red";
+        node.right_red = "red";
+
+    }
+   }  
+   
+ 
+   for (m = 0; m < answer_Links.length; m++) {
+    var link = answer_Links[m]; 
+   
+
+    leftnode = findlinkednode(link.h,linkedArray);
+    leftnodedata = leftnode.node;
+    rightnode = findlinkednode(link.t, linkedArray);
+    rightnodedata = rightnode.node;
+   
+     if(rightnodedata.left_red =="red" && leftnodedata.right_red =="red"){ 
+      link.boder_color = "red";
+     }
+    console.log(link); 
+   
+  } 
+
     for (n = 0; n < linkedArray.length; n++) {
       var node = linkedArray[n].node;
       console.log(node);
       drawnode(node);
     } 
+    console.log(answer_Links);
     addConnections(answer_Links);
+    
   }
   
 function setupLinkedArray(nodes, links) {

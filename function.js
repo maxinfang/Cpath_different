@@ -702,32 +702,23 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
        var student_linkednode=linkedArray_sub[m]; 
        var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
-          { node.color= "green";    
-
+          { node.color= "green";     
             if(node.EFT==student_node.EFT ){
-              if(node.EFTcolor == "red"){node.EFTcolor="blue";}
-              else{node.EFTcolor="orange";} 
+              
             } 
             if(node.EST==student_node.EST ){
-              if(node.ESTcolor == "red"){node.ESTcolor="blue";}
-              else{node.ESTcolor="organge";} 
+              
             }  
             if(node.FF==student_node.FF)  {
-              if(node.FFcolor == "red"){node.FFcolor="blue";}
-              else{node.FFcolor="orange";}   
+              
             }   
             if(node.LFT==student_node.LFT){ 
-              if(node.LFTcolor == "red"){node.LFTcolor="blue";}
-              else{node.LFTcolor="orange";}    
+                  
             } 
             if(node.LST==student_node.LST){ 
-                if(node.LSTcolor == "red"){node.LSTcolor="blue";}
-              else{node.LSTcolor="orange";} 
+               
             } 
-            if(node.TF==student_node.TF  ){
-                if(node.TFcolor == "red"){node.TFcolor="blue";}
-              else{node.TFcolor="orange";} 
-            
+            if(node.TF==student_node.TF  ){ 
             } 
               
     
@@ -775,6 +766,8 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
            }
         else {
          node.color="red"; 
+          //node.left_red= "red";
+          //node.right_red = "red";
           } 
       }
    
