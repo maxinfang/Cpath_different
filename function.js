@@ -775,7 +775,7 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
        var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
           { node.color= "green";     
-            if(student_node.EFT_corroct !=true  ){  
+            if(student_node.EFT_correct !=true  ){  
               node.color = "orange";
               node.EFTcolor="red";
               if (student_node.EFT == node.EFT) {
