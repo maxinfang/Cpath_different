@@ -488,16 +488,31 @@ function calculateEFT(node){
  node.EFT= +du[node.activity] +  +node.EST;
  
 }
+function checkEFT(node){
+  if (node.EFT == +du[node.activity] +  +node.EST)
+    {node.EFT_correct = true;
+    }
+  else{
+      node.EFT_correct = false;
+  }
+}
 
-
-
+ 
 
 function  calculateEST(node,value){
  
   node.EST=value;
-  return true;
-  
+  return true; 
 };
+
+function checkEST(node,value){ 
+if (node.EST == value)
+  {node.EST_correct = true;
+  }
+else{
+   node.EST_correct = false;
+}
+}
 
 
 
@@ -512,22 +527,58 @@ function calculateLFT(node,value){
   
 }
 
+function checkLFT(node,value){
+  if (node.LFT == value)
+    {node.LFT_correct = true;
+    }
+  else{
+      node.LFT_correct = false;
+  }
+
+}
+
+
 function calculateLST(node){
  node.LST=    +node.LFT - +du[node.activity];
  return node.EFT;
 }
 
+function checkLST(node){
+  if (node.LST == +node.LFT - +du[node.activity])
+    {node.LST_correct = true;
+    }
+  else{
+      node.LST_correct = false;
+  }
+
+}
 function calculateFFTF(node,value){ 
  node.FF=   value  - node.EFT;
  node.TF=    +node.LFT - +node.EFT;
  
 }
-
-
+function checkTF(node){
+  if (node.TF == +node.LFT - +node.EFT)
+    {node.TF_correct = true;
+    }
+  else{
+      node.TF_correct = false;
+  } 
+}
+ 
+  
 function calculateTF(node){
   node.TF=  +node.LFT - +node.EFT; 
 }
 
+function checkFF(node,value){
+  if (node.FF == value)
+    {node.FF_correct = true;
+    }
+  else{
+      node.FF_correct = false;
+  }
+}
 
 function calculateFF(node,value){
   node.FF=value;
@@ -723,36 +774,53 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
        var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
           { node.color= "green";     
-            if(node.EFT !=student_node.EFT ){  
+            if(student_node.EFT !=true  ){  
               node.color = "orange";
               node.EFTcolor="red";
+              if (student_node.EFT == node.EFT) {
+                node.EFTcolor = "blue";
+              }
             } 
-            if(node.EST != student_node.EST ){
+            if(student_node.EST_correct!=true  ){
               node.color = "orange";
               node.ESTcolor="red"; 
+              if (student_node.EST == node.EST) {
+                node.ESTcolor = "blue";
+              }
             }  
-            if(node.FF  != student_node.FF)  {
+            if(student_node.FF_correct !=true  )  {
               node.color = "orange";
               node.FFcolor="red";
+              if(student_node.FF == node.FF) {
+                node.FFcolor = "blue";
+              }
 
               
             }   
-            if(node.LFT !=student_node.LFT){ 
+            if(student_node.LFT_correct!=true ){ 
               node.color = "orange";
               node.LFTcolor="red";
+              if(student_node.LFT == node.LFT) {
+                node.LFTcolor = "blue";
+              }
 
                   
             } 
-            if(node.LST !=student_node.LST){ 
+            if(student_node.LST_correct != true ){ 
               node.color = "orange";
               node.LSTcolor="red";
+              if(student_node.LST == node.LST) {
+                node.LSTcolor = "blue";
+              }
 
                
             } 
-            if(node.TF != student_node.TF  ){ 
+            if(student_node.TF_correct !=true){ 
               node.color = "orange";
-              node.TFcolor="red";
-
+              node.TFcolor="red"; 
+              if(student_node.TF == node.TF) {
+                node.TFcolor = "blue";
+              }
             } 
               
     

@@ -61,8 +61,7 @@ function redraw(student_string, correct_string) {
     var deep = linkedrootnode.level;
     var deep_sub = linkedrootnode_sub.level;
 
-  
-
+   
      for (var n = deep; n > 0; n--) {
       for (var j = 0; j < linkedArray.length; j++) {
         var lnode = linkedArray[j];  
@@ -104,15 +103,15 @@ function redraw(student_string, correct_string) {
         }
       }
     }
-  /*
+  
+    /*check the student vlaue*/
     for (var n = deep_sub; n > 0; n--) {
       for (var j = 0; j < linkedArray_sub.length; j++) {
         var lnode = linkedArray_sub[j];  
         if (lnode.level == n) {
           var precon = lnode.prevconnectors;
           var _array = new Array();
-          _array.push(0);
-          console.log(precon.length);
+           console.log(precon.length);
           for (var k = 0; k < precon.length; k++) {  
             if (precon[k] == null) continue;
             var con = precon[k]; 
@@ -142,12 +141,13 @@ function redraw(student_string, correct_string) {
             }
           }
           var maxValudeofParentEFT = Math.max.apply(Math, _array);
-          calculateEST(lnode.node, maxValudeofParentEFT);
-          calculateEFT(lnode.node);
+         checkEST(lnode.node, maxValudeofParentEFT);
+         checkEFT(lnode.node);
+       
         }
       }
     }
-    */
+ 
 
     
     // use depth to get the calculation base
@@ -162,6 +162,16 @@ function redraw(student_string, correct_string) {
       }
     }
 
+    var project_duration_sub = 0;
+    for (var i = 1; i <= deep_sub; i++) {
+      for (var j = 0; j < linkedArray_sub.length; j++) {
+        var lnode = linkedArray_sub[j];
+        var nodeEFT = lnode.node.EFT;
+        if (project_duration_sub < nodeEFT) {
+          project_duration_sub = nodeEFT;
+        }
+      }
+    } 
     //loop thrugh and  calcualte differerent fields
     for (var i = 1; i <= deep; i++) {
       for (var j = 0; j < linkedArray.length; j++) {
@@ -230,6 +240,82 @@ function redraw(student_string, correct_string) {
         }
       }
     }
+
+     //loop thrugh and  calcualte differerent fields
+     for (var i = 1; i <= deep_sub; i++) {
+      for (var j = 0; j < linkedArray_sub.length; j++) {
+        var lnode = linkedArray_sub[j];
+        if (lnode.level == i) {
+          var nextcon = lnode.nextconnectors;
+          var _array = new Array();
+          var _array2 = new Array();
+          _array.push(project_duration_sub);
+          _array2.push(project_duration_sub);
+          for (var k = 0; k < nextcon.length; k++) {
+            var con = nextcon[k];
+            if (con == null) continue;
+            //finish to start;
+            if (con.activity == 0) {
+              var parentlinkednode = findlinkednode(con.t,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              _array.push(+parentnode.LST + -+con.LT);
+
+              var diff = +parentnode.EST - lnode.node.EFT;
+              var ff = diff - con.LT;
+              _array2.push(ff);
+            }
+            //start to start
+            if (con.activity == 1) {
+              var parentlinkednode = findlinkednode(con.t,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              var duration = du[lnode.node.activity];
+              _array.push(+parentnode.LST - con.LT + +duration);
+
+              var diff = parentnode.EST - lnode.node.EST;
+              var ff = diff - con.LT;
+              _array2.push(ff);
+            }
+            //finish to finish
+            if (con.activity == 2) {
+              var parentlinkednode = findlinkednode(con.t,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              var duration = du[lnode.node.activity];
+              var temp = +parentnode.LFT - +con.LT;
+              _array.push(temp);
+              var diff = +parentnode.EFT - lnode.node.EFT;
+              var ff = diff - con.LT;
+              _array2.push(ff);
+            }
+
+            // star to finish
+            if (con.activity == 3) {
+              var parentlinkednode = findlinkednode(con.t,linkedArray2_sub);
+              var parentnode = parentlinkednode.node;
+              var duration = du[lnode.node.activity];
+              var temp = +parentnode.LFT - +con.LT + +duration;
+              _array.push(temp);
+              var diff = +parentnode.EFT - lnode.node.EST;
+              var ff = diff - con.LT;
+              _array2.push(ff);
+            }
+          }
+          var minEFT = Math.min.apply(Math, _array);
+          checkLFT(lnode.node, minEFT);
+          checkLST(lnode.node);
+          checkEFT(lnode.node);
+         
+          //calculateLFT(lnode.node, minEFT);
+          //calculateLST(lnode.node);
+          //calculateTF(lnode.node);
+          _array2.push(lnode.node.TF);
+          var minFF = Math.min.apply(Math, _array2);
+          checkFF(lnode.node, minFF);
+         // calculateFF(lnode.node, minFF);
+        }
+      }
+    }
+
+
 
  
   console.log(linkedArray);
