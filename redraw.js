@@ -141,6 +141,7 @@ function redraw(student_string, correct_string) {
             }
           }
           var maxValudeofParentEFT = Math.max.apply(Math, _array);
+        if(maxValudeofParentEFT <0) {maxValudeofParentEFT =0;}
          checkEST(lnode.node, maxValudeofParentEFT);
          checkEFT(lnode.node);
        
