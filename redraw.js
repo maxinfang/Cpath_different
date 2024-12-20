@@ -302,7 +302,7 @@ function redraw(student_string, correct_string) {
           var minEFT = Math.min.apply(Math, _array);
           checkLFT(lnode.node, minEFT);
           checkLST(lnode.node);
-          checkEFT(lnode.node);
+          checkTF(lnode.node);
          
           //calculateLFT(lnode.node, minEFT);
           //calculateLST(lnode.node);

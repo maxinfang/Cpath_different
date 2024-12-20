@@ -488,12 +488,13 @@ function calculateEFT(node){
  node.EFT= +du[node.activity] +  +node.EST;
  
 }
-function checkEFT(node){
+function checkEFT(node){ 
+   
   if (node.EFT == +du[node.activity] +  +node.EST)
     {node.EFT_correct = true;
     }
   else{
-      node.EFT_correct = false;
+     node.EFT_correct = false;
   }
 }
 
@@ -774,7 +775,7 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
        var   student_node= student_linkednode.node;   
        if(student_node.activity ==  node.activity)  
           { node.color= "green";     
-            if(student_node.EFT !=true  ){  
+            if(student_node.EFT_corroct !=true  ){  
               node.color = "orange";
               node.EFTcolor="red";
               if (student_node.EFT == node.EFT) {
