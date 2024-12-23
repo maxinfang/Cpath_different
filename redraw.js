@@ -416,19 +416,20 @@ function redraw(student_string, correct_string) {
           student_node.color = correct_node.color;
           student_node.left_red = correct_node.left_red;
           student_node.right_red = correct_node.right_red;
-          student_node.EFT_color = correct_node.EFT_color;
-          student_node.EST_color = correct_node.EST_color;
-          student_node.LFT_color = correct_node.LFT_color;
-          student_node.LST_color = correct_node.LST_color;
-          student_node.FF_color = correct_node.FF_color;
-          student_node.TF_color = correct_node.TF_color;
-          
+          student_node.EFTcolor = correct_node.EFTcolor;
+          student_node.ESTcolor = correct_node.ESTcolor;
+          student_node.LFTcolor = correct_node.LFTcolor;
+          student_node.LSTcolor = correct_node.LSTcolor;
+          student_node.FFcolor = correct_node.FFcolor;
+          student_node.TFcolor = correct_node.TFcolor;
+
         }
       } 
     } 
 
     for (n = 0; n < linkedArray_sub.length; n++) {
       var node = linkedArray_sub[n].node;
+      console.log(node)
       drawnode(node);
     }
      addConnections(mylinks); 
