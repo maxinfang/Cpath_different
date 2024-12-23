@@ -14,7 +14,7 @@ function drawarrowbox(type,data,conn){
      }
      
      else{
-      dropL=addarrowDroplist(data.activity);
+      dropL=addarrowDroplist(data.activity,data.activity_color);
       dropLid=$(dropL).prop('id'); 
       $(dropL).width('90%');
       
@@ -48,9 +48,9 @@ function drawarrowbox(type,data,conn){
    
      
    var LTdata = document.createElement("div");
-       var LT=(data.LT=="") ? addtext("LT") : addtext("LT",data.LT);
+       var LT=(data.LT=="") ? addtext("LT") : addtext("LT",data.LT, data.LT_color);
    LTdata.style.display = 'block'; 
-       $(LTdata).append(addlabel(" Lead Time:"));
+        $(LTdata).append(addlabel(" Lead Time:"));
    $(datadiv).append(LTdata);
          $(LTdata).append(LT); 
        

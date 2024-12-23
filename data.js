@@ -18,10 +18,12 @@ function addDroplist(options){
 
 };
 
-function addarrowDroplist(options){ 
+function addarrowDroplist(options,color){ 
+
   newselect= document.createElement('select');
   $(newselect).addClass("droplist");
   var select= $(newselect).uniqueId(); 
+  //add the color
   selectId=$(newselect).prop("id");
   for(o=0;o<arrayop.length;o++){
     $(newselect).append('<option value='+o+' style="width:50;">'+arrayop[o]+'</option>');
@@ -32,6 +34,13 @@ function addarrowDroplist(options){
     return $(newselect); 
   }
   else{ 
+    if (color) {
+      $(newselect).css(
+        {"border-color": color,
+      "border-width": "2px",
+      "border-style": "solid"
+    });
+    }
     newselect.value= options;
     return $(newselect); 
   }
@@ -52,7 +61,7 @@ function addtext(lable,value,bordercolor=null){
   $(text).uniqueId();  
   text.type="text";
   text.style.width='30px';
-
+  
   text.name=lable; 
   if (typeof value=== 'undefined') {text.style.borderColor="red"; }
 

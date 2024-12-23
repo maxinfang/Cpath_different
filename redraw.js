@@ -382,19 +382,26 @@ function redraw(student_string, correct_string) {
    
  
    for (m = 0; m < answer_Links.length; m++) {
-    var link = answer_Links[m]; 
-   
-
+    var link = answer_Links[m];  
     leftnode = findlinkednode(link.h,linkedArray);
     leftnodedata = leftnode.node;
     rightnode = findlinkednode(link.t, linkedArray);
-    rightnodedata = rightnode.node;
-   
+    rightnodedata = rightnode.node; 
      if(rightnodedata.left_red =="red" && leftnodedata.right_red =="red"){ 
       link.boder_color = "red";
-     }
-   //console.log(link); 
-   
+     } 
+    for(n=0; n<mylinks.length;n++){
+      var link_sub = mylinks[n];
+      if(link.h == link_sub.h && link.t == link_sub.t){
+          console.log(link);
+          if(link.LT != link_sub.LT){
+            link.LT_color = "red";
+          }
+          if(link.activity != link_sub.activity){
+            link.activity_color = "red";
+          }
+        }
+    }
   } 
 
   if(mode == "correct" ){
