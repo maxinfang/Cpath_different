@@ -369,8 +369,7 @@ function redraw(student_string, correct_string) {
    calculateLinkedArrayAndValues(answer_Nodes, answer_Links); 
    compareAndUpdateNodes(linkedArray,linkedArray_sub);
    // need to updateanswerlinks; 
-   console.log(linkedArray);
-   
+    
    for (n = 0; n < linkedArray.length; n++) {
     var node = linkedArray[n].node;
     if (node.color == "red")   {
@@ -379,6 +378,15 @@ function redraw(student_string, correct_string) {
 
     }
    }  
+    for (n = 0; n < linkedArray.length; n++) {
+      var node = linkedArray[n].node;
+      if (node.left_red == "red" && node.right_red != "red") {
+        node.color = "orange";
+      }
+      if (node.left_red != "red" && node.right_red == "red") {
+        node.color = "orange";
+      }
+    }
    
  
    for (m = 0; m < answer_Links.length; m++) {
