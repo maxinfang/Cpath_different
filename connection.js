@@ -33,7 +33,7 @@ function addConnection(link){
   var linkconn= jsPlumb.connect({
    source:s,
    target:t,
-   paintStyle: { stroke: "red", strokeWidth: 2 } // Set the stroke color to red
+  // paintStyle: { stroke: "red", strokeWidth: 2 } // Set the stroke color to red
 
    
 
@@ -59,7 +59,6 @@ tableclass ="datatable border-red";
   
   if(link.activity==0 &&(link.LT==""||link.LT=="0")   ){ 
     linkconn.setPaintStyle({lineWidth: 2, 
-      strokeStyle:"red", 
       dashstyle:"4 2"
     }) 
       var box= linkconn.getOverlays();
