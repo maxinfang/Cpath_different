@@ -88,8 +88,8 @@ function deserialiseL(string){
    var cc = new connector(); 
    cc.h= linkAttribute[1]
    cc.t= linkAttribute[2]; 
-   cc.activity=dataAttribute[1];
-   cc.LT=dataAttribute[2];
+   cc.activity=  parseInt(dataAttribute[1]) || 0;  
+   cc.LT=  parseInt(dataAttribute[2]) || 0;  
  
    array.push(cc);
  }
@@ -136,13 +136,13 @@ function deserialiseC(string){
  
        var dataAttribute=shapeanddata[1].split('d');
       // console.log(dataAttribute);
-      node.activity=parseInt(dataAttribute[1]);
-      node.EST=parseInt(dataAttribute[2]);
-      node.EFT=parseInt(dataAttribute[3]);
-      node.LST=parseInt(dataAttribute[4]);
-      node.LFT=parseInt(dataAttribute[5]);
-      node.FF=parseInt(dataAttribute[6]);
-      node.TF=parseInt(dataAttribute[7]); 
+      node.activity=parseInt(dataAttribute[1]) || 0;
+      node.EST=parseInt(dataAttribute[2]) || 0;
+      node.EFT=parseInt(dataAttribute[3]) || 0;
+      node.LST=parseInt(dataAttribute[4]) || 0;
+      node.LFT=parseInt(dataAttribute[5]) || 0;
+      node.FF=parseInt(dataAttribute[6]) || 0;
+      node.TF=parseInt(dataAttribute[7]) || 0; 
       array.push(node); 
     }  
     return array;   
