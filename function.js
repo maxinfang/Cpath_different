@@ -373,7 +373,7 @@ function updatelink(link,property,con){
   var ll= findlink(link.h,link.t)
   if(ll){
    if(property=="activity"){ll.activity=link.activity;
-    if (ll.activity==0){
+   /* if (ll.activity==0){
       con.setPaintStyle({lineWidth: 2, 
        strokeStyle:"black" ,
        dashstyle: "4 2"})
@@ -384,7 +384,7 @@ function updatelink(link,property,con){
        lineWidth: 2 ,
        strokeStyle:"black"
      })
-   } 
+   } */
  } 
  if(property=="EST"){ll.EST=link.EST;} 
  if(property=="EFT"){ll.EFT=link.EFT;}
