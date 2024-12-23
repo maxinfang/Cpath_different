@@ -107,13 +107,18 @@ function getSubmission(){
   return parentintputbox[0].value;
 }
 
-var op = getEntry();
-console.log(op);
+function getCorrectAnswer(){
+ 
+  var el=parent.document.getElementById(namespaceforAnswer).innerHTML; 
+  
+  return el;
+  
+} 
 
+var op = getEntry(); 
 var arrayop=Array("Finish to Start", "Start to Start", "Finish to Finish", " Start to Finish");
 
-var du= getDuration();
-console.log(du);
+var du= getDuration(); 
 
 
 
@@ -138,7 +143,17 @@ $(document).ready(function()  {
     if(history_page == "" ){ 
     }
     else{  
-     reload(history_page); 
+      if(mode=="submission") {  // console.log("submission");
+        //console.log(getSubmission());
+        //console.log(getCorrectAnswer());
+        answer_type=getType();
+        redraw(getSubmission(),getCorrectAnswer()); 
+      
+      }
+      else if(mode=="student") {
+        reload(history_page); 
+      }
+   
    }
    
  

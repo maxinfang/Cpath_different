@@ -84,7 +84,7 @@ function deserialiseL(string){
    var shapeanddata=link[i].split('D');  
    var linkAttribute= shapeanddata[0].split('c'); 
    var dataAttribute=shapeanddata[1].split('d');
-   console.log(dataAttribute);
+   //console.log(dataAttribute);
    var cc = new connector(); 
    cc.h= linkAttribute[1]
    cc.t= linkAttribute[2]; 
@@ -111,7 +111,7 @@ if (!Array.prototype.compare)
           }
           else if (this[i] != testArr[i]) return false;
       }
-    console.log("found!");
+   
       return true;
   }
     }
@@ -763,8 +763,8 @@ function setupLinkedArray(nodes, links) {
 
 
 function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
-  console.log(linkedArray);
-  console.log(linkedArray_sub);
+ // console.log(linkedArray);
+  //console.log(linkedArray_sub);
 
   for(var n=0; n<linkedArray.length;n++){
     var linkednode = linkedArray[n];
@@ -832,7 +832,7 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
              // Add all the previous node activities to correctbox
 
             student_linkednode.prevNode.forEach(function(a) {
-              console.log(a);
+             // console.log(a);
               studentbox.push(a.node.activity);
             });
 
@@ -841,8 +841,8 @@ function compareAndUpdateNodes(linkedArray,linkedArray_sub) {
              correctbox.push(a.node.activity);
             }); 
               
-            console.log(correctbox);
-            console.log(studentbox);
+            ///console.log(correctbox);
+           // console.log(studentbox);
             if( !correctbox.sort().compare(studentbox.sort())) { node.left_red="red"; 
               
             }

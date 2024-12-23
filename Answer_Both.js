@@ -72,9 +72,8 @@ function getDuration(){
     }else {flag=0;}
     
   }
-  
-  console.log("_+++++"+elements[0]+"fas");
-  return elements;
+   
+   return elements;
 }
 
 

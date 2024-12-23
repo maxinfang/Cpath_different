@@ -8,16 +8,18 @@ function redraw(student_string, correct_string) {
   answer_Nodes = deserialiseC(correct_string);
   answer_Links = deserialiseL(correct_string);
 
+
+
  
 
   if (myNodes == []) return;
-  if (mode == "submission") {
+  /*if (mode == "submission" && answer_type == "overlapping") {
     for (n = 0; n < submission_Nodes.length; n++) {
       var node = myNodes[n]; 
       drawnode(node);
     }
     addConnections(myinks);
-  }
+  }*/
  
 
   if (mode == "student" && answer_type == "overlapping") {
@@ -37,7 +39,7 @@ function redraw(student_string, correct_string) {
     addConnections(mylinks);*/
   }
 
-  if (mode == "correct" && answer_type == "overlapping") {
+  if (answer_type == "overlapping") {
     
     var root = new Node();
     root = findrootnode(answer_Nodes, answer_Links);
@@ -50,8 +52,8 @@ function redraw(student_string, correct_string) {
    var linkedArray_sub = returnvalues.linkedArray;
     //ABOVE IS TO SET UP THE LINKED ARRAY 
     var linkedrootnode = findlinkednode(root.id,linkedArray2); 
-    console.log(linkedArray);
-    console.log(linkedArray_sub); 
+    //console.log(linkedArray);
+    //console.log(linkedArray_sub); 
     var linkedrootnode_sub = findlinkednode(root_sub.id,linkedArray2_sub);
    
     recursive(linkedrootnode);
@@ -111,7 +113,7 @@ function redraw(student_string, correct_string) {
         if (lnode.level == n) {
           var precon = lnode.prevconnectors;
           var _array = new Array();
-           console.log(precon.length);
+        //   console.log(precon.length);
           for (var k = 0; k < precon.length; k++) {  
             if (precon[k] == null) continue;
             var con = precon[k]; 
@@ -395,15 +397,25 @@ function redraw(student_string, correct_string) {
    
   } 
 
+  if(mode == "correct" ){
     for (n = 0; n < linkedArray.length; n++) {
       var node = linkedArray[n].node;
-      console.log(node);
+    //  console.log(node);
       drawnode(node);
     } 
-    console.log(answer_Links);
-    addConnections(answer_Links);
+     addConnections(answer_Links); 
+
+  }
+  if(mode == "submission" ){
+    for (n = 0; n < linkedArray_sub.length; n++) {
+      var node = linkedArray_sub[n].node;
+      drawnode(node);
+    } 
+     addConnections(mylinks); 
+ 
     
   }
+ }
   
 function setupLinkedArray(nodes, links) {
   var linkedArray = [];
