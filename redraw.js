@@ -407,10 +407,30 @@ function redraw(student_string, correct_string) {
 
   }
   if(mode == "submission" ){
+    //matching with correct string get the color passed 
+    for (n = 0; n < linkedArray_sub.length; n++) {
+      for (m = 0; m < linkedArray.length; m++) {
+        var student_node = linkedArray_sub[n].node;
+        var correct_node = linkedArray[m].node;
+         if (student_node.id == correct_node.id) { 
+          student_node.color = correct_node.color;
+          student_node.left_red = correct_node.left_red;
+          student_node.right_red = correct_node.right_red;
+          student_node.EFT_color = correct_node.EFT_color;
+          student_node.EST_color = correct_node.EST_color;
+          student_node.LFT_color = correct_node.LFT_color;
+          student_node.LST_color = correct_node.LST_color;
+          student_node.FF_color = correct_node.FF_color;
+          student_node.TF_color = correct_node.TF_color;
+          
+        }
+      } 
+    } 
+
     for (n = 0; n < linkedArray_sub.length; n++) {
       var node = linkedArray_sub[n].node;
       drawnode(node);
-    } 
+    }
      addConnections(mylinks); 
  
     
