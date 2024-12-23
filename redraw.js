@@ -391,18 +391,55 @@ function redraw(student_string, correct_string) {
       link.boder_color = "red";
      } 
     for(n=0; n<mylinks.length;n++){
-      var link_sub = mylinks[n];
+      var link_sub = mylinks[n]; 
       if(link.h == link_sub.h && link.t == link_sub.t){
-          console.log(link);
+         link.boder_color = "black";
           if(link.LT != link_sub.LT){
             link.LT_color = "red";
+            link_sub.LT_color = "red";
           }
           if(link.activity != link_sub.activity){
             link.activity_color = "red";
+            link_sub.activity_color = "red";
           }
         }
     }
   } 
+
+
+  for (m = 0; m < answer_Links.length; m++) {
+    var link = answer_Links[m];
+    flag = 0;
+    for (n = 0; n < mylinks.length; n++) {
+      var link_sub = mylinks[n]; 
+      if (link.h == link_sub.h && link.t == link_sub.t) {
+       flag =1;
+      }
+    }
+    if(flag){
+      link.boder_color = "black";
+    }
+    else{
+      link.boder_color = "red";
+    }
+  }
+
+  for (m = 0; m < mylinks.length; m++) {
+    var link_sub = mylinks[m];
+    flag = 0;
+    for (n = 0; n < answer_Links.length; n++) {
+      var link= answer_Links[n]; 
+      if (link.h == link_sub.h && link.t == link_sub.t) {
+         link_sub.boder_color = link.boder_color;
+         link_sub.activity_color = link.activity_color
+         link_sub.LT_color = link.LT_color;
+      }
+    } 
+  }
+
+
+
+ 
 
   if(mode == "correct" ){
     for (n = 0; n < linkedArray.length; n++) {
