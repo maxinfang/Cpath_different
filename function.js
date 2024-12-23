@@ -375,14 +375,14 @@ function updatelink(link,property,con){
    if(property=="activity"){ll.activity=link.activity;
     if (ll.activity==0){
       con.setPaintStyle({lineWidth: 2, 
-       strokeStyle:"red" ,
+       strokeStyle:"black" ,
        dashstyle: "4 2"})
     } 
     else{
      con.setPaintStyle({
        dashstyle: "solid",
        lineWidth: 2 ,
-       strokeStyle:"red"
+       strokeStyle:"black"
      })
    } 
  } 
